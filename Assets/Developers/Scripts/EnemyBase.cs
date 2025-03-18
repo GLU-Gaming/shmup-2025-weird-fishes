@@ -1,16 +1,10 @@
 using UnityEngine;
 
-public class EnemyBase : MonoBehaviour
+public abstract class EnemyBase : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public abstract void Shoot();
+    public abstract void Destroyed();
+    public abstract void Spawn();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public abstract void Damaged();
 }

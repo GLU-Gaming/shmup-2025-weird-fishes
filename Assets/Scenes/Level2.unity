@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb68c9323457e24983f317b8977dfc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 5
   moveSpeed: 5
   rotationSpeed: 5
 --- !u!54 &166169575
@@ -611,6 +612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb68c9323457e24983f317b8977dfc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 5
   moveSpeed: 10
   rotationSpeed: 10
 --- !u!54 &1635887470
@@ -748,6 +750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb68c9323457e24983f317b8977dfc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 5
   moveSpeed: 5
   rotationSpeed: 5
 --- !u!65 &1839922316

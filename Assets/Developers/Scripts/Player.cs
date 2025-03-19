@@ -2,9 +2,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public int health = 5; // Player's HP
     public float moveSpeed = 5f; // Snelheid van de speler
     public float rotationSpeed = 5f; // Snelheid van de rotatie
+    public GameManager gameManager;
 
+     void Start()
+    {
+        gameManager = FindFirstObjectByType<GameManager>();
+    }
     void Update()
     {
         // Beweging op de X-as (links/rechts) en Y-as (omhoog/omlaag)
@@ -30,5 +36,32 @@ public class Player : MonoBehaviour
         // Interpoleer soepel naar de gewenste rotatie (alleen X-as aanpassen)
         Quaternion targetRotation = Quaternion.Euler(targetRotationX, 0, 0);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+    }
+
+    // Player has been hitted by the enemy
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Hitted();
+        }
+    }
+    private void Hitted()
+    {
+        health--; //Auch
+
+        //spawning exsplosion particle 
+        //Instantiate(BoomVFX);  
+
+        switch (health)
+        {
+            case 1:
+                gameManager.MakeScreenRed(); //Changing volume profile for "blood" effect
+            break;
+
+            case 0:
+                // game over
+            break;
+        }
     }
 }

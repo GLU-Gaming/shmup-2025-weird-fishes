@@ -2,16 +2,18 @@ using UnityEngine;
 
 public class Enemy1 : EnemyBase
 {
-    private int HP = 1;
-    [SerializeField] private Transform target;
+    private int HP = 1; //health
+    [SerializeField] private Transform target; //player
     public float speed;
     void Start()
     {
         speed = 5;
+        audioManager = FindFirstObjectByType<AudioManager>();
     }
 
     void Update()
     {
+        // moving to the player
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target.position, step);
     }
@@ -21,6 +23,7 @@ public class Enemy1 : EnemyBase
     }
     public override void Destroyed()
     {
+        // deleting object
         Destroy(gameObject);
     }
     public override void Spawn()
@@ -32,12 +35,24 @@ public class Enemy1 : EnemyBase
 
     }
 
+    // enemy triggered by other
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Triggered");
-        if (other.gameObject.CompareTag("Player"))
+        // checking Tag of hitted object
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Bullet"))
         {
+            //Boom
+            audioManager.PlaySound(0);
+            audioManager.ChangeVolumeSound("d");
             Destroyed();
         }
+        //else if (other.gameObject.CompareTag("Bullet"))
+        //{
+        //    //Boom
+        //    audioManager.PlaySound(0);
+        //    audioManager.ChangeVolumeSound("d");
+        //    Destroyed();
+        //}
     }
 }

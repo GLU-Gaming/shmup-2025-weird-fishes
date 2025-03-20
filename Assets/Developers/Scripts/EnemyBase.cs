@@ -1,16 +1,14 @@
 using UnityEngine;
 
-public class EnemyBase : MonoBehaviour
+public abstract class EnemyBase : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    //base variabeles for all enemy scripts
+    public AudioManager audioManager;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //base functions for all enemy scripts
+    public abstract void Shoot();
+    public abstract void Destroyed();
+    public abstract void Spawn();
+
+    public abstract void Damaged();
 }

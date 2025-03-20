@@ -6,10 +6,21 @@ public class Player : MonoBehaviour
     public float moveSpeed = 5f; // Snelheid van de speler
     public float rotationSpeed = 5f; // Snelheid van de rotatie
     public GameManager gameManager;
+    public AudioManager audioManager;
+    public GameObject[] kamikadzes;
+    private SphereCollider kamikadzExplRadius;
+    private BoxCollider kamikadzeCollaider;
 
      void Start()
     {
         gameManager = FindFirstObjectByType<GameManager>();
+        audioManager = FindFirstObjectByType<AudioManager>();
+        kamikadzes = GameObject.FindGameObjectsWithTag("Kamikadze");
+        foreach (GameObject kamikadze in kamikadzes)
+        {
+            kamikadzExplRadius = kamikadze.GetComponent<SphereCollider>();
+            kamikadzeCollaider = kamikadze.GetComponent<BoxCollider>();
+        }
     }
     void Update()
     {
@@ -44,10 +55,33 @@ public class Player : MonoBehaviour
         {
             Hitted();
         }
+
+        if (other.gameObject.CompareTag("Enemy Bullet"))
+        {
+            //Boom
+            Hitted();
+            audioManager.ChangeVolumeSound("d");
+            Destroy(other.gameObject);
+        }
+        if (other.gameObject.CompareTag("Kamikadze") && other == kamikadzExplRadius)
+        {
+            Debug.Log("Ready?");
+            audioManager.PlaySound(1);
+        }
+        if (other.gameObject.CompareTag("Kamikadze") && other == kamikadzeCollaider)
+        {
+            Hitted();
+            Debug.Log("BABAH");
+            Destroy(other.gameObject);
+            audioManager.PlaySound(2);
+        }
+
     }
     private void Hitted()
     {
         health--; //Auch
+
+        //audioManager.PlaySound(0);
 
         //spawning exsplosion particle 
         //Instantiate(BoomVFX);  

@@ -2,13 +2,16 @@ using UnityEngine;
 
 public class Enemy1 : EnemyBase
 {
-    private int HP = 1; //health
     [SerializeField] private Transform target; //player
     public float speed;
+    private SphereCollider explosionRadius;
+    private BoxCollider enemyCollaider;
     void Start()
     {
         speed = 5;
         audioManager = FindFirstObjectByType<AudioManager>();
+        explosionRadius = GetComponent<SphereCollider>();
+        enemyCollaider = GetComponent<BoxCollider>();
     }
 
     void Update()
@@ -40,19 +43,12 @@ public class Enemy1 : EnemyBase
     {
         Debug.Log("Triggered");
         // checking Tag of hitted object
-        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Bullet"))
+        if (other.gameObject.CompareTag("Player Bullet"))
         {
             //Boom
-            audioManager.PlaySound(0);
-            audioManager.ChangeVolumeSound("d");
+            audioManager.PlaySound(2);
+            audioManager.ChangeVolumeSound();
             Destroyed();
         }
-        //else if (other.gameObject.CompareTag("Bullet"))
-        //{
-        //    //Boom
-        //    audioManager.PlaySound(0);
-        //    audioManager.ChangeVolumeSound("d");
-        //    Destroyed();
-        //}
     }
 }

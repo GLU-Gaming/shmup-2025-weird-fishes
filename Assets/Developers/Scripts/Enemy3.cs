@@ -1,35 +1,28 @@
 using UnityEngine;
 
-public class Enemy2 : EnemyBase
+public class Enemy3 : EnemyBase
 {
     private int HP = 3;
     [SerializeField] private Transform firePoint;
     public float speed;
     [SerializeField] private GameObject bulletPrefab;
     public float fireCooldown;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        fireCooldown = 2.5f;
-        speed = 5;
-        audioManager = FindFirstObjectByType<AudioManager>();
-        bulletPrefab = Resources.Load<GameObject>("Prefabs/Bullet");
+        
     }
 
+    // Update is called once per frame
     void Update()
     {
-        float step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, firePoint.position, step);
-        fireCooldown -= Time.deltaTime;
-
-        if (fireCooldown <= 0)
-        {
-            Shoot();
-        }
+        
     }
+
     public override void Shoot()
     {
-        Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 90, 0));
-        fireCooldown = 2.5f;
+
     }
     public override void Destroyed()
     {

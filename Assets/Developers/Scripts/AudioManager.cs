@@ -15,13 +15,16 @@ public class AudioManager : MonoBehaviour
     // logic variabels for Lerp (smooth change)
     private float targetValueUp = 1f;
     private float targetValueDown = 0.2f;
-    public float timeDuration = 1f;
+    private float targetValueMid = 0.5f;
+    public float timeDuration = 1.5f;
     private float elapsedTime = 0f;
     private float currentVolume;
     [SerializeField] private string changeConfig;
+    private bool isChanging;
 
     void Start()
     {
+        isChanging = false;
         //getting Scene name
         string currentScene = SceneManager.GetActiveScene().name;
 
@@ -75,38 +78,54 @@ public class AudioManager : MonoBehaviour
 
 
         // smooth change volume to max
-        if (elapsedTime < timeDuration && changeConfig == "upper")
+        if (elapsedTime < timeDuration && isChanging)
         {
             elapsedTime += Time.deltaTime;
-            float changedVolume = Mathf.Lerp(currentVolume, targetValueUp, elapsedTime / timeDuration);
-            audioMusic.volume = changedVolume;
-            // smooth change volume to low
-        } else if (elapsedTime < timeDuration && changeConfig == "downer")
-        {
-            elapsedTime += Time.deltaTime;
-            float changedVolume = Mathf.Lerp(currentVolume, targetValueDown, elapsedTime / timeDuration);
+            float changedVolume = Mathf.Lerp(currentVolume, GetTargetValue(), elapsedTime / timeDuration);
             audioMusic.volume = changedVolume;
         }
+            // smooth change volume to low
+
         // reset
         if (elapsedTime >= timeDuration)
         {
+            isChanging = false;
             changeConfig = "null";
             elapsedTime = 0;
         }
     }
 
     // changing volume of audio source
-    public void ChangeVolumeSound(string config = "up")
+    public void ChangeVolumeSound(string config = "mid")
     {
+        isChanging = true;
         currentVolume = audioMusic.volume;
         Debug.Log(currentVolume);
         if (config == "up")
         {
             changeConfig = "upper";
         }
-        else
+        else if (config == "down")
         {
             changeConfig = "downer";
+        } else
+        {
+            changeConfig = "mideum";
         }
+    }
+    private float GetTargetValue()
+    {
+        
+        switch (changeConfig)
+        {
+            case "upper":
+                return targetValueUp;
+            case "downer":
+                return targetValueDown;
+            case "mideum":
+                return targetValueMid;
+        }
+        return 1f;
+
     }
 }

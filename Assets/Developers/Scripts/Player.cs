@@ -73,6 +73,7 @@ public class Player : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Kamikadze") && other == kamikadzeCollaider)
         {
+            audioManager.ChangeVolumeSound("down");
             Hitted();
             Debug.Log("BABAH");
             gameManager.Stunned();

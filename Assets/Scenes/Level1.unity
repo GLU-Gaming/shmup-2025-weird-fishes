@@ -1782,6 +1782,14 @@ PrefabInstance:
       propertyPath: 'SFX.Array.data[2]'
       value: 
       objectReference: {fileID: 8300000, guid: 90197049b56e91e409b0621fed53d384, type: 3}
+    - target: {fileID: 5425164339060552124, guid: 5b857e8bab8709f40ba8f9d312565b85, type: 3}
+      propertyPath: soundtracks.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425164339060552124, guid: 5b857e8bab8709f40ba8f9d312565b85, type: 3}
+      propertyPath: 'soundtracks.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 2bc866d4d80f9d247827d74e790e599b, type: 3}
     - target: {fileID: 5683735739466338531, guid: 5b857e8bab8709f40ba8f9d312565b85, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.566942

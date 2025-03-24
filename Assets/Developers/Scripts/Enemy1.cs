@@ -3,11 +3,14 @@ using UnityEngine;
 public class Enemy1 : EnemyBase
 {
     [SerializeField] private Transform target; //player
+    [SerializeField] private GameObject player; //player
     public float speed;
     private SphereCollider explosionRadius;
     private BoxCollider enemyCollaider;
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        target = player.transform;
         speed = 5;
         audioManager = FindFirstObjectByType<AudioManager>();
         explosionRadius = GetComponent<SphereCollider>();

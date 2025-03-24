@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7513870635063434478}
   m_Layer: 6
   m_Name: Enemy (var1)
-  m_TagString: Enemy
+  m_TagString: Kamikadze
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioManager: {fileID: 0}
   target: {fileID: 0}
+  player: {fileID: 0}
   speed: 5
 --- !u!54 &1735087406769285982
 Rigidbody:

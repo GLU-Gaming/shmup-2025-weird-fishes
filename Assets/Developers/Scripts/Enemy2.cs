@@ -23,13 +23,13 @@ public class Enemy2 : EnemyBase
 
         if (fireCooldown <= 0)
         {
-            Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0,90,0));
-            fireCooldown = 2.5f;
+            Shoot();
         }
     }
     public override void Shoot()
     {
-
+        Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 90, 0));
+        fireCooldown = 2.5f;
     }
     public override void Destroyed()
     {
@@ -53,7 +53,7 @@ public class Enemy2 : EnemyBase
     //Enemy has been hitted
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player Bullet"))
+        if (other.gameObject.CompareTag("Player Bullet") || other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Enemy hitted");
             //audioManager.PlaySound(0);

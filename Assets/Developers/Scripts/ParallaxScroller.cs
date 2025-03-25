@@ -1,30 +1,75 @@
+using System.Collections.Generic;
+using NUnit.Framework;
+using Unity.VisualScripting;
 using UnityEngine;
+
+[System.Serializable]
+public class ParallaxLayer
+{
+    public Transform layerTransform;
+    public float speedMultiplier;
+}
 
 public class ParallaxScroller : MonoBehaviour
 {
-    [System.Serializable]
-    public class ParallaxLayer
-    {
-        public Transform layerTransform; // The background object
-        public float speedMultiplier = 1f; // The speed of this layer
-    }
 
-    public ParallaxLayer[] layers; // Array of background layers
-    public float baseScrollSpeed = 2f; // Base speed of the parallax scroll
-    public float resetPosition = 20f; // Reset position to loop backgrounds
+
+    //public ParallaxLayer[] layers;
+    public List<ParallaxLayer> layerList = new List<ParallaxLayer>();
+
+    public float baseSpeed = 2f;
+    public float resetPosition = 20f;
+
+
 
     void Update()
     {
-        foreach (var layer in layers)
+        foreach (ParallaxLayer layer in layerList)
         {
-            // Scroll each layer to the left, scaled by its speedMultiplier
-            layer.layerTransform.position += Vector3.left * (baseScrollSpeed * layer.speedMultiplier) * Time.deltaTime;
-
-            // Reset the background position when it's out of view
-            if (layer.layerTransform.position.x <= -resetPosition)
-            {
-                layer.layerTransform.position += new Vector3(resetPosition * 2, 0, 0);
-            }
+            // Beweeg de laag naar links
+            layer.layerTransform.position += Vector3.left * baseSpeed * layer.speedMultiplier * Time.deltaTime;
         }
+        //        //Het eerste element uit de array in de gaten houden (layers[0]) als die onder de resetPosition komt
+        //        //Plaats die dan op dezelfde plek als het laatste element  Vector3 topRight = layerList[layerList.Count - 1].layerTransform.GetComponent<SpriteRenderer>().bounds.max;
+
+        if (layerList[0].layerTransform.localPosition.x <= resetPosition)
+        {
+            Debug.Log(layerList[0].layerTransform.localPosition.x);
+            ParallaxLayer firstLayer = layerList[0];
+            Debug.Log("Moving: " + firstLayer.layerTransform.name);
+
+
+            ParallaxLayer lastLayer = layerList[layerList.Count - 1];
+            Vector3 topRight = lastLayer.layerTransform.GetComponent<SpriteRenderer>().bounds.max;
+            topRight.z = transform.position.z;
+
+            firstLayer.layerTransform.position = topRight;
+
+            layerList.Remove(firstLayer);
+            layerList.Add(firstLayer);
+        }
+
+        //        //Sla het laatste element in een lokale variabele
+
+        //        //Verwijder het element uit de lijst met layerList.Remove();
+        //        //Voeg het element opnieuw toe aan de lijst met layerList.Add();
+
+        //        // Herhaal de laag als deze uit beeld verdwijnt
+        //        //if (layer.layerTransform.position.x <= -resetPosition)
+        //        //    {
+        //        //        layer.layerTransform.position += new Vector3(resetPosition * 2, 0, 0);
+        //        //    }
+        //    }
+    }
+
+
+    private void OnDrawGizmosSelected()
+    {
+        //layers[0]
+        Vector3 topRight = layerList[layerList.Count - 1].layerTransform.GetComponent<SpriteRenderer>().bounds.max;
+        Gizmos.DrawSphere(topRight, 4);
     }
 }
+
+
+

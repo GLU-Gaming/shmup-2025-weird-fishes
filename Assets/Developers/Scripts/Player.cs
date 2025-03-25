@@ -1,26 +1,22 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     public int health = 5; // Player's HP
     public float moveSpeed = 5f; // Snelheid van de speler
     public float rotationSpeed = 5f; // Snelheid van de rotatie
+    public float speed;
     public GameManager gameManager;
     public AudioManager audioManager;
     public GameObject[] kamikadzes;
-    private SphereCollider kamikadzExplRadius;
-    private BoxCollider kamikadzeCollaider;
 
      void Start()
     {
+        speed = 5f;
         gameManager = FindFirstObjectByType<GameManager>();
         audioManager = FindFirstObjectByType<AudioManager>();
         kamikadzes = GameObject.FindGameObjectsWithTag("Kamikadze");
-        foreach (GameObject kamikadze in kamikadzes)
-        {
-            kamikadzExplRadius = kamikadze.GetComponent<SphereCollider>();
-            kamikadzeCollaider = kamikadze.GetComponent<BoxCollider>();
-        }
     }
     void Update()
     {
@@ -63,17 +59,40 @@ public class Player : MonoBehaviour
             audioManager.ChangeVolumeSound("d");
             Destroy(other.gameObject);
         }
-        if (other.gameObject.CompareTag("Kamikadze") && other == kamikadzExplRadius)
+        //if (other.gameObject.CompareTag("Kamikadze") && other == kamikadzExplRadius)
+        //{
+        //    Debug.Log("Ready?");
+        //    audioManager.PlaySound(1);
+        //}
+        //if (other.gameObject.CompareTag("Kamikadze") && other == kamikadzeCollaider)
+        //{
+        //    audioManager.ChangeVolumeSound("down");
+        //    Hitted();
+        //    Debug.Log("BABAH");
+        //    gameManager.Stunned();
+        //    Destroy(other.gameObject);
+        //    audioManager.PlaySound(2);
+        //}
+        if (other.gameObject.CompareTag("Kamikadze"))
         {
-            Debug.Log("Ready?");
-            audioManager.PlaySound(1);
-        }
-        if (other.gameObject.CompareTag("Kamikadze") && other == kamikadzeCollaider)
-        {
-            Hitted();
-            Debug.Log("BABAH");
-            Destroy(other.gameObject);
-            audioManager.PlaySound(2);
+            SphereCollider explosionRadius = other.GetComponent<SphereCollider>();
+            BoxCollider kamikadzeCollider = other.GetComponent<BoxCollider>();
+
+            if (explosionRadius != null && other == explosionRadius)
+            {
+                Debug.Log("Ready?");
+                audioManager.PlaySound(1);
+            }
+            if (kamikadzeCollider != null && other == kamikadzeCollider)
+            {
+                audioManager.ChangeVolumeSound("down");
+                Hitted();
+                Debug.Log("BABAH");
+                gameManager.Stunned();
+                gameManager.spawnedEnemies.Remove(other.gameObject);
+                Destroy(other.gameObject);
+                audioManager.PlaySound(2);
+            }
         }
 
     }
@@ -94,6 +113,7 @@ public class Player : MonoBehaviour
 
             case 0:
                 // game over
+                SceneManager.LoadScene("GameOver");
             break;
         }
     }

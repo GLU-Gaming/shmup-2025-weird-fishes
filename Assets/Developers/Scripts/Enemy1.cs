@@ -13,6 +13,7 @@ public class Enemy1 : EnemyBase
         target = player.transform;
         speed = 5;
         audioManager = FindFirstObjectByType<AudioManager>();
+        gameManager = FindFirstObjectByType<GameManager>();
         explosionRadius = GetComponent<SphereCollider>();
         enemyCollaider = GetComponent<BoxCollider>();
     }
@@ -30,6 +31,7 @@ public class Enemy1 : EnemyBase
     public override void Destroyed()
     {
         // deleting object
+        gameManager.spawnedEnemies.Remove(gameObject);
         Destroy(gameObject);
     }
     public override void Spawn()
@@ -49,8 +51,8 @@ public class Enemy1 : EnemyBase
         if (other.gameObject.CompareTag("Player Bullet"))
         {
             //Boom
+            gameManager.ScoreUp(20);
             audioManager.PlaySound(2);
-            audioManager.ChangeVolumeSound();
             Destroyed();
         }
     }

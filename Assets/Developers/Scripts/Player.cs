@@ -4,14 +4,17 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     public int health = 5; // Player's HP
+    public float fireCooldown = 1.5f;
     public float moveSpeed = 5f; // Snelheid van de speler
     public float rotationSpeed = 5f; // Snelheid van de rotatie
     public float speed;
     public GameManager gameManager;
     public AudioManager audioManager;
     public GameObject[] kamikadzes;
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private GameObject bulletPrefab;
 
-     void Start()
+    void Start()
     {
         speed = 5f;
         gameManager = FindFirstObjectByType<GameManager>();
@@ -39,9 +42,16 @@ public class Player : MonoBehaviour
             targetRotationX = -35f; // Tilt downwards
         }
 
+        if (Input.GetKey(KeyCode.Space) && fireCooldown <= 0)
+        {
+            Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 270, 0));
+            fireCooldown = 1.5f;
+        }
+
         // Smoothly interpolate to the target rotation (only X-axis changes)
         Quaternion targetRotation = Quaternion.Euler(targetRotationX, 0, 0);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        fireCooldown -= Time.deltaTime;
     }
 
     // Player has been hitted by the enemy
@@ -59,20 +69,6 @@ public class Player : MonoBehaviour
             audioManager.ChangeVolumeSound("d");
             Destroy(other.gameObject);
         }
-        //if (other.gameObject.CompareTag("Kamikadze") && other == kamikadzExplRadius)
-        //{
-        //    Debug.Log("Ready?");
-        //    audioManager.PlaySound(1);
-        //}
-        //if (other.gameObject.CompareTag("Kamikadze") && other == kamikadzeCollaider)
-        //{
-        //    audioManager.ChangeVolumeSound("down");
-        //    Hitted();
-        //    Debug.Log("BABAH");
-        //    gameManager.Stunned();
-        //    Destroy(other.gameObject);
-        //    audioManager.PlaySound(2);
-        //}
         if (other.gameObject.CompareTag("Kamikadze"))
         {
             SphereCollider explosionRadius = other.GetComponent<SphereCollider>();

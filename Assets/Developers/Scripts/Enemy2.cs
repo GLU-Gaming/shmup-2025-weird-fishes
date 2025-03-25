@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Enemy2 : EnemyBase
 {
-    private int HP = 3;
+    private int HP = 1;
     [SerializeField] private Transform firePoint;
     public float speed;
     [SerializeField] private GameObject bulletPrefab;
@@ -12,6 +12,7 @@ public class Enemy2 : EnemyBase
         fireCooldown = 2.5f;
         speed = 5;
         audioManager = FindFirstObjectByType<AudioManager>();
+        gameManager = FindFirstObjectByType<GameManager>();
         bulletPrefab = Resources.Load<GameObject>("Prefabs/Bullet");
     }
 
@@ -26,6 +27,7 @@ public class Enemy2 : EnemyBase
             Shoot();
         }
     }
+     
     public override void Shoot()
     {
         Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 90, 0));
@@ -34,6 +36,8 @@ public class Enemy2 : EnemyBase
     public override void Destroyed()
     {
         //deleting enemy
+        gameManager.ScoreUp(25);
+        gameManager.spawnedEnemies.Remove(gameObject);
         Destroy(gameObject);
     }
     public override void Spawn()
@@ -55,7 +59,7 @@ public class Enemy2 : EnemyBase
     {
         if (other.gameObject.CompareTag("Player Bullet") || other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Enemy hitted");
+            //Debug.LogError("Enemy hitted");
             //audioManager.PlaySound(0);
             Damaged();
         }

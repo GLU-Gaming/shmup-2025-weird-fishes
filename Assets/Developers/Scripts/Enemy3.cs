@@ -11,7 +11,7 @@ public class Enemy3 : EnemyBase
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        gameManager = FindFirstObjectByType<GameManager>();
     }
 
     // Update is called once per frame
@@ -27,6 +27,8 @@ public class Enemy3 : EnemyBase
     public override void Destroyed()
     {
         //deleting enemy
+        gameManager.ScoreUp(40);
+        gameManager.spawnedEnemies.Remove(gameObject);
         Destroy(gameObject);
     }
     public override void Spawn()

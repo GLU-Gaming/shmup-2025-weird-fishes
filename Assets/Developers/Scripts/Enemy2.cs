@@ -7,6 +7,8 @@ public class Enemy2 : EnemyBase
     public float speed;
     [SerializeField] private GameObject bulletPrefab;
     public float fireCooldown;
+    public float rotationSpeed = 30f; // snelheid van de cirkelbeweging
+
     void Start()
     {
         fireCooldown = 2.5f;
@@ -18,7 +20,12 @@ public class Enemy2 : EnemyBase
     void Update()
     {
         float step = speed * Time.deltaTime;
+
+        // Beweeg richting het firePoint
         transform.position = Vector3.MoveTowards(transform.position, firePoint.position, step);
+
+   
+
         fireCooldown -= Time.deltaTime;
 
         if (fireCooldown <= 0)
@@ -26,23 +33,26 @@ public class Enemy2 : EnemyBase
             Shoot();
         }
     }
+
     public override void Shoot()
     {
         Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 90, 0));
         fireCooldown = 2.5f;
     }
+
     public override void Destroyed()
     {
-        //deleting enemy
+        // Verwijder vijand
         Destroy(gameObject);
     }
+
     public override void Spawn()
     {
-
     }
+
     public override void Damaged()
     {
-        //damaging enemy
+        // Vijand krijgt schade
         HP--;
         if (HP <= 0)
         {
@@ -50,13 +60,12 @@ public class Enemy2 : EnemyBase
         }
     }
 
-    //Enemy has been hitted
+    // Vijand is geraakt
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player Bullet") || other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Enemy hitted");
-            //audioManager.PlaySound(0);
             Damaged();
         }
     }

@@ -7,17 +7,28 @@ public class Enemy3 : EnemyBase
     public float speed;
     [SerializeField] private GameObject bulletPrefab;
     public float fireCooldown;
+    [SerializeField] private Transform target; //player
+    [SerializeField] private GameObject player; //player
+    private SphereCollider explosionRadius;
+    private BoxCollider enemyCollaider;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player");
+        target = player.transform;
+        speed = 5;
+        audioManager = FindFirstObjectByType<AudioManager>();
+      
+        enemyCollaider = GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // moving to the player
+        float step = speed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, target.position, step);
     }
 
     public override void Shoot()

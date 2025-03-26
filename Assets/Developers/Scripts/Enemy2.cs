@@ -2,18 +2,21 @@ using UnityEngine;
 
 public class Enemy2 : EnemyBase
 {
-    private int HP = 3;
+    private int HP = 1;
     [SerializeField] private Transform firePoint;
     public float speed;
     [SerializeField] private GameObject bulletPrefab;
     public float fireCooldown;
     public float rotationSpeed = 30f; // snelheid van de cirkelbeweging
+    public GameObject[] particles;
 
     void Start()
     {
+        particles[0] = Resources.Load<GameObject>("Prefabs/Particles/EnemyExplosion");
         fireCooldown = 2.5f;
         speed = 5;
         audioManager = FindFirstObjectByType<AudioManager>();
+        gameManager = FindFirstObjectByType<GameManager>();
         bulletPrefab = Resources.Load<GameObject>("Prefabs/Bullet");
     }
 
@@ -33,6 +36,7 @@ public class Enemy2 : EnemyBase
             Shoot();
         }
     }
+     
 
     public override void Shoot()
     {
@@ -42,7 +46,9 @@ public class Enemy2 : EnemyBase
 
     public override void Destroyed()
     {
-        // Verwijder vijand
+        //deleting enemy
+        gameManager.ScoreUp(25);
+        gameManager.spawnedEnemies.Remove(gameObject);
         Destroy(gameObject);
     }
 
@@ -65,6 +71,7 @@ public class Enemy2 : EnemyBase
     {
         if (other.gameObject.CompareTag("Player Bullet") || other.gameObject.CompareTag("Player"))
         {
+            Instantiate(particles[0], transform.position, Quaternion.identity);
             Debug.Log("Enemy hitted");
             Damaged();
         }

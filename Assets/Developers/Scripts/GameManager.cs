@@ -34,10 +34,12 @@ public class GameManager : MonoBehaviour
     public List<GameObject> spawnedEnemies = new List<GameObject>();
 
     [SerializeField] private int killedWaves = 0;
+    [SerializeField] private int score;
 
     private float waveTimer = 20f;
     void Awake()
     {
+        score = PlayerPrefs.GetInt("Score",0);
         // initialization of profile VFX
         volumeProfile.TryGet(out vignette);
         vignette.active = false;
@@ -116,8 +118,14 @@ public class GameManager : MonoBehaviour
             killedWaves++;
             if (killedWaves > 5)
             {
-                if(currentScene == "Level1") {SceneManager.LoadScene("Level2");}
-                else if(currentScene == "Level2") {SceneManager.LoadScene("Level3");}
+                if(currentScene == "Level1") {
+                    PlayerPrefs.SetInt("Score",score);
+                    SceneManager.LoadScene("Level2");
+                }
+                else if(currentScene == "Level2") {
+                    PlayerPrefs.SetInt("Score", score);
+                    SceneManager.LoadScene("Level3");
+                }
             }
             else
             {
@@ -144,7 +152,7 @@ public class GameManager : MonoBehaviour
     public void SpawnEnemy(int enemyNum)
     {
        Vector3 playerPos = playerObject.transform.position;
-        int posY = Random.Range(-15, 21);
+        int posY = Random.Range(-10, 10);
         GameObject enemyInstance = null;
         if (enemyNum == 1)
         {
@@ -190,5 +198,13 @@ public class GameManager : MonoBehaviour
         {
             SpawnEnemy(enemies[wave][i]);
         }
+    }
+    public void ScoreUp(int amount)
+    {
+        score += amount;
+    }
+    public int GetScore()
+    {
+        return score;
     }
 }

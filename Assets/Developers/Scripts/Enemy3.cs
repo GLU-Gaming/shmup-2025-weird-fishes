@@ -15,6 +15,7 @@ public class Enemy3 : EnemyBase
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        gameManager = FindFirstObjectByType<GameManager>();
         player = GameObject.FindGameObjectWithTag("Player");
         target = player.transform;
         speed = 5;
@@ -38,6 +39,8 @@ public class Enemy3 : EnemyBase
     public override void Destroyed()
     {
         //deleting enemy
+        gameManager.ScoreUp(40);
+        gameManager.spawnedEnemies.Remove(gameObject);
         Destroy(gameObject);
     }
     public override void Spawn()

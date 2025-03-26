@@ -31,7 +31,7 @@ public class AudioManager : MonoBehaviour
         //Setting soundtrack depending on a scene
         if (currentScene == "Level1")
         {
-            audioMusic.clip = soundtracks[2];
+            audioMusic.clip = soundtracks[0];
 
         } else if (currentScene == "Level2")
         {

@@ -5,6 +5,7 @@ public abstract class EnemyBase : MonoBehaviour
     //base variabeles for all enemy scripts
     public AudioManager audioManager;
     public GameManager gameManager;
+    //public GameObject[] particles = new GameObject[5];
 
     //base functions for all enemy scripts
     public abstract void Shoot();

@@ -8,9 +8,11 @@ public class Enemy2 : EnemyBase
     [SerializeField] private GameObject bulletPrefab;
     public float fireCooldown;
     public float rotationSpeed = 30f; // snelheid van de cirkelbeweging
+    public GameObject[] particles;
 
     void Start()
     {
+        particles[0] = Resources.Load<GameObject>("Prefabs/Particles/EnemyExplosion");
         fireCooldown = 2.5f;
         speed = 5;
         audioManager = FindFirstObjectByType<AudioManager>();
@@ -69,6 +71,7 @@ public class Enemy2 : EnemyBase
     {
         if (other.gameObject.CompareTag("Player Bullet") || other.gameObject.CompareTag("Player"))
         {
+            Instantiate(particles[0], transform.position, Quaternion.identity);
             Debug.Log("Enemy hitted");
             Damaged();
         }

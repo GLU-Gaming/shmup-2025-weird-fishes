@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public GameObject[] kamikadzes;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject[] particles;
 
     void Start()
     {

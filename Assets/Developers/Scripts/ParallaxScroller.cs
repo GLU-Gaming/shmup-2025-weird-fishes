@@ -48,18 +48,6 @@ public class ParallaxScroller : MonoBehaviour
             layerList.Remove(firstLayer);
             layerList.Add(firstLayer);
         }
-
-        //        //Sla het laatste element in een lokale variabele
-
-        //        //Verwijder het element uit de lijst met layerList.Remove();
-        //        //Voeg het element opnieuw toe aan de lijst met layerList.Add();
-
-        //        // Herhaal de laag als deze uit beeld verdwijnt
-        //        //if (layer.layerTransform.position.x <= -resetPosition)
-        //        //    {
-        //        //        layer.layerTransform.position += new Vector3(resetPosition * 2, 0, 0);
-        //        //    }
-        //    }
     }
 
 

@@ -51,12 +51,12 @@ public class ParallaxScroller : MonoBehaviour
     }
 
 
-    private void OnDrawGizmosSelected()
-    {
-        //layers[0]
-        Vector3 topRight = layerList[layerList.Count - 1].layerTransform.GetComponent<SpriteRenderer>().bounds.max;
-        Gizmos.DrawSphere(topRight, 4);
-    }
+    //private void OnDrawGizmosSelected()
+    //{
+    //    //layers[0]
+    //    Vector3 topRight = layerList[layerList.Count - 1].layerTransform.GetComponent<SpriteRenderer>().bounds.max;
+    //    Gizmos.DrawSphere(topRight, 4);
+    //}
 }
 
 

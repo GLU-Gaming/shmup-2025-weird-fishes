@@ -9,8 +9,7 @@ public class Enemy3 : EnemyBase
     public float fireCooldown;
     [SerializeField] private Transform target; //player
     [SerializeField] private GameObject player; //player
-    private SphereCollider explosionRadius;
-    private BoxCollider enemyCollaider;
+    private BoxCollider enemyCollider;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,7 +20,7 @@ public class Enemy3 : EnemyBase
         speed = 5;
         audioManager = FindFirstObjectByType<AudioManager>();
       
-        enemyCollaider = GetComponent<BoxCollider>();
+        enemyCollider = GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame

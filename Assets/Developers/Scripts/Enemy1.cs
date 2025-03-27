@@ -6,7 +6,7 @@ public class Enemy1 : EnemyBase
     [SerializeField] private GameObject player; //player
     public float speed;
     private SphereCollider explosionRadius;
-    private BoxCollider enemyCollaider;
+    private BoxCollider enemyCollider;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -15,7 +15,7 @@ public class Enemy1 : EnemyBase
         audioManager = FindFirstObjectByType<AudioManager>();
         gameManager = FindFirstObjectByType<GameManager>();
         explosionRadius = GetComponent<SphereCollider>();
-        enemyCollaider = GetComponent<BoxCollider>();
+        enemyCollider = GetComponent<BoxCollider>();
     }
 
     void Update()

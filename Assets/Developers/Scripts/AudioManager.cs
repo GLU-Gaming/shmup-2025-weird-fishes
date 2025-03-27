@@ -77,14 +77,13 @@ public class AudioManager : MonoBehaviour
         //Debug.Log(audioMusic.volume);
 
 
-        // smooth change volume to max
+        // smooth change volume
         if (elapsedTime < timeDuration && isChanging)
         {
             elapsedTime += Time.deltaTime;
             float changedVolume = Mathf.Lerp(currentVolume, GetTargetValue(), elapsedTime / timeDuration);
             audioMusic.volume = changedVolume;
         }
-            // smooth change volume to low
 
         // reset
         if (elapsedTime >= timeDuration)

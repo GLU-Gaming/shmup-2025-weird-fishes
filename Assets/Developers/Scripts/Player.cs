@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
@@ -14,22 +14,28 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private GameObject[] particles;
+    private Rigidbody rb;
 
     void Start()
     {
         speed = 5f;
+        rb = GetComponent<Rigidbody>();
         gameManager = FindFirstObjectByType<GameManager>();
         audioManager = FindFirstObjectByType<AudioManager>();
         kamikadzes = GameObject.FindGameObjectsWithTag("Kamikadze");
     }
     void Update()
     {
-        // Vertical movement (W = Up, S = Down)
-        float moveY = Input.GetAxis("Vertical"); // "W" and "S"
 
-        // Move player only on the Y-axis
-        Vector3 move = new Vector3(0, moveY, 0) * moveSpeed * Time.deltaTime;
-        transform.position += move;
+        // Vertical movement (W = Up, S = Down)
+        float moveY = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+
+        //// Move player only on the Y-axis
+        transform.position += new Vector3(0, moveY, 0);
+
+        //Y-axis borders
+        float clampedY = Mathf.Clamp(transform.position.y, -11f, 11f);
+        transform.position = new Vector3(transform.position.x, clampedY, transform.position.z);
 
         // Handle rotation on the X-axis
         float targetRotationX = 0f;
@@ -54,6 +60,14 @@ public class Player : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         fireCooldown -= Time.deltaTime;
     }
+    //void FixedUpdate()
+    //{
+    //    float moveY = Input.GetAxis("Vertical"); // "W" and "S"
+
+    //    Vector3 move = new Vector3(0, moveY, 0) * moveSpeed * Time.fixedDeltaTime;
+
+    //    rb.MovePosition(rb.position + move);
+    //}
 
     // Player has been hitted by the enemy
     private void OnTriggerEnter(Collider other)

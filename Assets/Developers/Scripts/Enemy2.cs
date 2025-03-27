@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Enemy2 : EnemyBase
 {
@@ -7,12 +7,14 @@ public class Enemy2 : EnemyBase
     public float speed;
     [SerializeField] private GameObject bulletPrefab;
     public float fireCooldown;
-    public float rotationSpeed = 30f; // snelheid van de cirkelbeweging
     public GameObject[] particles;
 
     void Start()
     {
+        particles = new GameObject[1];
+
         particles[0] = Resources.Load<GameObject>("Prefabs/Particles/EnemyExplosion");
+
         fireCooldown = 2.5f;
         speed = 5;
         audioManager = FindFirstObjectByType<AudioManager>();

@@ -1,55 +1,115 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Enemy3 : EnemyBase
 {
     private int HP = 3;
-    [SerializeField] private Transform firePoint;
-    public float speed;
+    [SerializeField] private Transform leftPoint;
+    [SerializeField] private Transform[] firePoints;
+    public float speedEnemy;
+    public float speedBullet;
     [SerializeField] private GameObject bulletPrefab;
-    public float fireCooldown;
-    [SerializeField] private Transform target; //player
-    [SerializeField] private GameObject player; //player
-    private SphereCollider explosionRadius;
-    private BoxCollider enemyCollaider;
+    public float fireRate = 0.3f;
+    public float rotateTime = 2.5f;
+    private MeshCollider enemyCollider;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private float rotationSpeed = 750f;
+    private float targetSpeed;
+    private bool isSlowingDown = false;
+    [SerializeField] private bool isRotating = true;
+
+    [SerializeField] private Transform[] fireEndPosition;
+    private float stepEnemy;
+    private float stepBullet;
+
     void Start()
     {
+        isRotating = true;
         gameManager = FindFirstObjectByType<GameManager>();
-        player = GameObject.FindGameObjectWithTag("Player");
-        target = player.transform;
-        speed = 5;
+        speedEnemy = 1;
+        speedBullet = 10;
         audioManager = FindFirstObjectByType<AudioManager>();
-      
-        enemyCollaider = GetComponent<BoxCollider>();
+        enemyCollider = GetComponent<MeshCollider>();
+        targetSpeed = rotationSpeed;
+        StartCoroutine(ControlRotation());
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // moving to the player
-        float step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+        fireRate -= Time.deltaTime;
+        if (isRotating && fireRate <= 0)
+        {
+            Shoot();
+        }
+        stepEnemy = speedEnemy * Time.deltaTime;
+        stepBullet = speedEnemy * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, leftPoint.position, stepEnemy);
+
+        if (!isSlowingDown)
+        {
+            transform.Rotate(0, 0, targetSpeed * Time.deltaTime);
+        }
+    }
+
+    IEnumerator ControlRotation()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(2.5f);
+            yield return StartCoroutine(SlowDownRotation());
+            yield return new WaitForSeconds(3.5f - 1f);
+            isRotating = true;
+            targetSpeed = rotationSpeed;
+        }
+    }
+
+    IEnumerator SlowDownRotation()
+    {
+        isSlowingDown = true;
+        isRotating = false;
+        float startSpeed = targetSpeed;
+        float elapsedTime = 0f;
+        float duration = 1f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            targetSpeed = Mathf.Lerp(startSpeed, 0, elapsedTime / duration);
+            transform.Rotate(0, 0, targetSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        targetSpeed = 0;
+        isSlowingDown = false;
+        rotateTime = 2.5f;
     }
 
     public override void Shoot()
     {
+        //for (int i = 0; i < firePoints.Length; i++)
+        //{
+        //  Instantiate(starBullets[i], firePoints[i].position, firePoints[i].rotation);
 
+        //}
+        int pos = Random.Range(0, 6);
+        Instantiate(bulletPrefab, firePoints[pos].position, firePoints[pos].rotation);
+        fireRate = 0.15f;
     }
+
     public override void Destroyed()
     {
-        //deleting enemy
         gameManager.ScoreUp(40);
         gameManager.spawnedEnemies.Remove(gameObject);
         Destroy(gameObject);
     }
+
     public override void Spawn()
     {
-
     }
+
     public override void Damaged()
     {
-        //damaging enemy
         HP--;
         if (HP <= 0)
         {
@@ -57,13 +117,11 @@ public class Enemy3 : EnemyBase
         }
     }
 
-    //Enemy has been hitted
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player Bullet") || other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Enemy hitted");
-            //audioManager.PlaySound(0);
             Damaged();
         }
     }

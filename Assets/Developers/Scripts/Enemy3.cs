@@ -92,7 +92,7 @@ public class Enemy3 : EnemyBase
         //  Instantiate(starBullets[i], firePoints[i].position, firePoints[i].rotation);
 
         //}
-        int pos = Random.Range(0, 6);
+        int pos = Random.Range(0, 5);
         Instantiate(bulletPrefab, firePoints[pos].position, firePoints[pos].rotation);
         fireRate = 0.15f;
     }

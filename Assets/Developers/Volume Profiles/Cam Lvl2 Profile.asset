@@ -59,10 +59,10 @@ MonoBehaviour:
   active: 1
   lift:
     m_OverrideState: 1
-    m_Value: {x: 0.9764623, y: 0.96045303, z: 1, w: 0.018540047}
+    m_Value: {x: 0.9668985, y: 0.8153832, z: 1, w: 0.018540047}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 0.9585554, y: 0.93980527, z: 1, w: -0.29663974}
+    m_Value: {x: 0.96266973, y: 0.97842515, z: 1, w: -0.29663974}
   gain:
     m_OverrideState: 1
     m_Value: {x: 0.9808039, y: 0.93127704, z: 1, w: 0.0926999}
@@ -81,7 +81,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: 250
   tintColor:
     m_OverrideState: 1
     m_Value: {r: 0.36388907, g: 0.0056318752, b: 0.4264151, a: 1}

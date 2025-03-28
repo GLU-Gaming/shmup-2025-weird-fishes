@@ -8,6 +8,7 @@ TagManager:
   - Enemy Bullet
   - Player Bullet
   - Kamikadze
+  - Border
   layers:
   - Default
   - TransparentFX

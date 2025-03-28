@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     public int health = 5; // Player's HP
-    public float fireCooldown = 1.5f;
+    public float fireCooldown = 0.75f;
     public float moveSpeed = 5f; // Snelheid van de speler
     public float rotationSpeed = 5f; // Snelheid van de rotatie
     public float speed;
@@ -51,8 +51,10 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && fireCooldown <= 0)
         {
-            Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 270, 0));
-            fireCooldown = 1.5f;
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 270, 0));
+            bullet.transform.rotation = Quaternion.Euler(0f, 0f, 270f);
+
+            fireCooldown = 0.75f;
         }
 
         // Smoothly interpolate to the target rotation (only X-axis changes)

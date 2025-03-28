@@ -164,7 +164,7 @@ public class GameManager : MonoBehaviour
         }
         else if (enemyNum == 3)
         {
-             
+            enemyInstance = Instantiate(enemyPrefab3, playerPos += new Vector3(40, posY, 0), Quaternion.identity);
         }
         if (enemyInstance != null)
         {
@@ -179,8 +179,10 @@ public class GameManager : MonoBehaviour
         {
             case 1:
                 enemies.Add(new List<int> {1,1});
-                enemies.Add(new List<int> { 1, 2, 2, 2 });
-                enemies.Add(new List<int> { 2, 1, 1 });
+                enemies.Add(new List<int> { 1, 2, 3, 2 });
+                enemies.Add(new List<int> { 1, 1, 3, 2 });
+                enemies.Add(new List<int> { 3, 3});
+                enemies.Add(new List<int> { 2, 1, 3 });
                 break;
                 case 2:
 

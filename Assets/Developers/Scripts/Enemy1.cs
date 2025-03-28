@@ -5,17 +5,15 @@ public class Enemy1 : EnemyBase
     [SerializeField] private Transform target; //player
     [SerializeField] private GameObject player; //player
     public float speed;
-    private SphereCollider explosionRadius;
-    private BoxCollider enemyCollider;
+    private GameObject particle;
     void Start()
     {
+        particle = Resources.Load<GameObject>("Prefabs/Particles/EnemyExplosion");
         player = GameObject.FindGameObjectWithTag("Player");
         target = player.transform;
         speed = 5;
         audioManager = FindFirstObjectByType<AudioManager>();
         gameManager = FindFirstObjectByType<GameManager>();
-        explosionRadius = GetComponent<SphereCollider>();
-        enemyCollider = GetComponent<BoxCollider>();
     }
 
     void Update()
@@ -30,6 +28,7 @@ public class Enemy1 : EnemyBase
     }
     public override void Destroyed()
     {
+        Instantiate(particle, transform.position, Quaternion.identity);
         // deleting object
         gameManager.spawnedEnemies.Remove(gameObject);
         Destroy(gameObject);
@@ -40,20 +39,8 @@ public class Enemy1 : EnemyBase
     }
     public override void Damaged()
     {
-
-    }
-
-    // enemy triggered by other
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Triggered");
-        // checking Tag of hitted object
-        if (other.gameObject.CompareTag("Player Bullet"))
-        {
-            //Boom
-            gameManager.ScoreUp(20);
-            audioManager.PlaySound(2);
-            Destroyed();
-        }
+        gameManager.ScoreUp(20);
+        audioManager.PlaySound(2);
+        Destroyed();
     }
 }

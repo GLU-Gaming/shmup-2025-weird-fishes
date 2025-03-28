@@ -7,13 +7,12 @@ public class Enemy2 : EnemyBase
     public float speed;
     [SerializeField] private GameObject bulletPrefab;
     public float fireCooldown;
-    public GameObject[] particles;
+    private GameObject particle;
 
     void Start()
     {
-        particles = new GameObject[1];
 
-        particles[0] = Resources.Load<GameObject>("Prefabs/Particles/EnemyExplosion");
+        particle = Resources.Load<GameObject>("Prefabs/Particles/EnemyExplosion");
 
         fireCooldown = 2.5f;
         speed = 5;
@@ -27,9 +26,10 @@ public class Enemy2 : EnemyBase
         float step = speed * Time.deltaTime;
 
         // Beweeg richting het firePoint
-        transform.position = Vector3.MoveTowards(transform.position, firePoint.position, step);
+        //transform.position = Vector3.MoveTowards(transform.position, firePoint.position, step);
+        transform.position += transform.right * -speed * Time.deltaTime;
 
-   
+
 
         fireCooldown -= Time.deltaTime;
 
@@ -42,7 +42,8 @@ public class Enemy2 : EnemyBase
 
     public override void Shoot()
     {
-        Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 90, 0));
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 90, 0));
+        bullet.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
         fireCooldown = 2.5f;
     }
 
@@ -73,7 +74,7 @@ public class Enemy2 : EnemyBase
     {
         if (other.gameObject.CompareTag("Player Bullet") || other.gameObject.CompareTag("Player"))
         {
-            Instantiate(particles[0], transform.position, Quaternion.identity);
+            Instantiate(particle, transform.position, Quaternion.identity);
             Debug.Log("Enemy hitted");
             Damaged();
         }

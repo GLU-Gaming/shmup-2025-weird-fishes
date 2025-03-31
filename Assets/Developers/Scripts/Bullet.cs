@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         float step = speed * Time.deltaTime;
-        transform.Translate(Vector3.back * speed * Time.deltaTime);
+        transform.Translate(Vector3.up * speed * Time.deltaTime);
         lifeDuration -= Time.deltaTime;
         if (lifeDuration <= 0 )
         {

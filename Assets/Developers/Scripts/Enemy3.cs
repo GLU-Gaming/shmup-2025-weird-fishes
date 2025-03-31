@@ -14,7 +14,7 @@ public class Enemy3 : EnemyBase
     public float rotateTime = 2.5f;
     private MeshCollider enemyCollider;
 
-    private float rotationSpeed = 750f;
+    private float rotationSpeed = 500f;
     private float targetSpeed;
     private bool isSlowingDown = false;
     [SerializeField] private bool isRotating = true;
@@ -22,12 +22,18 @@ public class Enemy3 : EnemyBase
     [SerializeField] private Transform[] fireEndPosition;
     private float stepEnemy;
     private float stepBullet;
+    private GameObject[] particles;
 
     void Start()
     {
+        GameObject leftBorder = GameObject.FindGameObjectWithTag("Border");
+        leftPoint = leftBorder.transform;
+        particles = new GameObject[2];
+        particles[0] = Resources.Load<GameObject>("Prefabs/Particles/EnemyExplosion");
+        particles[1] = Resources.Load<GameObject>("Prefabs/Particles/EnemyDamage");
         isRotating = true;
         gameManager = FindFirstObjectByType<GameManager>();
-        speedEnemy = 1;
+        speedEnemy = 5;
         speedBullet = 10;
         audioManager = FindFirstObjectByType<AudioManager>();
         enemyCollider = GetComponent<MeshCollider>();
@@ -45,6 +51,8 @@ public class Enemy3 : EnemyBase
         stepEnemy = speedEnemy * Time.deltaTime;
         stepBullet = speedEnemy * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, leftPoint.position, stepEnemy);
+        //transform.position += transform.right * speedEnemy * Time.deltaTime;
+        //transform.Translate(Vector3.left * speedEnemy * Time.deltaTime);
 
         if (!isSlowingDown)
         {
@@ -99,6 +107,7 @@ public class Enemy3 : EnemyBase
 
     public override void Destroyed()
     {
+        Instantiate(particles[0], transform.position, Quaternion.identity);
         gameManager.ScoreUp(40);
         gameManager.spawnedEnemies.Remove(gameObject);
         Destroy(gameObject);
@@ -114,6 +123,9 @@ public class Enemy3 : EnemyBase
         if (HP <= 0)
         {
             Destroyed();
+        } else
+        {
+            Instantiate(particles[1], transform.position, Quaternion.identity);
         }
     }
 

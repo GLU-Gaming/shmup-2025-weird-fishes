@@ -24,8 +24,15 @@ public class Enemy3 : EnemyBase
     private float stepBullet;
     private GameObject[] particles;
 
+    private Renderer enRenderer;
+    private Color originalColor;
+    public Color flashColor = Color.white;
+    public float flashDuration = 0.1f;
+
     void Start()
     {
+        enRenderer = GetComponent<Renderer>();
+        originalColor = enRenderer.material.color;
         GameObject leftBorder = GameObject.FindGameObjectWithTag("Border");
         leftPoint = leftBorder.transform;
         particles = new GameObject[2];
@@ -120,6 +127,7 @@ public class Enemy3 : EnemyBase
     public override void Damaged()
     {
         HP--;
+        StartCoroutine(FlashEffect());
         if (HP <= 0)
         {
             Destroyed();
@@ -131,10 +139,21 @@ public class Enemy3 : EnemyBase
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player Bullet") || other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player Bullet"))
         {
             Debug.Log("Enemy hitted");
+            Destroy(other.gameObject);
             Damaged();
         }
+        else if (other.gameObject.CompareTag("Player"))
+        {
+            Damaged();
+        }
+    }
+    private System.Collections.IEnumerator FlashEffect()
+    {
+        enRenderer.material.color = flashColor;
+        yield return new WaitForSeconds(flashDuration);
+        enRenderer.material.color = originalColor;
     }
 }

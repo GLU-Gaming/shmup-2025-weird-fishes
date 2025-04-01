@@ -486,6 +486,8 @@ MonoBehaviour:
   - {fileID: 8138856583693908288}
   - {fileID: 5820931268590805548}
   - {fileID: 6060380208327645118}
+  flashColor: {r: 0, g: 0.29088402, b: 1, a: 1}
+  flashDuration: 0.2
 --- !u!54 &7320267963092371518
 Rigidbody:
   m_ObjectHideFlags: 0

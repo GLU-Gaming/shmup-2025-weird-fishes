@@ -14,6 +14,7 @@ public class HitBox : MonoBehaviour
         if (other.gameObject.CompareTag("Player Bullet"))
         {
             enemy.Damaged();
+            Destroy(other.gameObject);
         }
     }
 }

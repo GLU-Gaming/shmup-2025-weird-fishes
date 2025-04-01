@@ -50,6 +50,7 @@ public class Enemy2 : EnemyBase
     public override void Destroyed()
     {
         //deleting enemy
+        Instantiate(particle, transform.position, Quaternion.identity);
         gameManager.ScoreUp(25);
         gameManager.spawnedEnemies.Remove(gameObject);
         Destroy(gameObject);
@@ -72,10 +73,14 @@ public class Enemy2 : EnemyBase
     // Vijand is geraakt
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player Bullet") || other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player Bullet"))
         {
-            Instantiate(particle, transform.position, Quaternion.identity);
+            Destroy(other.gameObject);
             Debug.Log("Enemy hitted");
+            Damaged();
+        } 
+        else if (other.gameObject.CompareTag("Player"))
+        {
             Damaged();
         }
     }

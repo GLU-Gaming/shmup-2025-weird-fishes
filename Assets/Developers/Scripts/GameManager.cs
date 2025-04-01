@@ -152,19 +152,20 @@ public class GameManager : MonoBehaviour
     public void SpawnEnemy(int enemyNum)
     {
        Vector3 playerPos = playerObject.transform.position;
-        int posY = Random.Range(-10, 10);
+        int posY1 = Random.Range(-10, 10);
+        int posY2 = Random.Range(-5, 5);
         GameObject enemyInstance = null;
         if (enemyNum == 1)
         {
-            enemyInstance = Instantiate(enemyPrefab1, playerPos += new Vector3(40, posY, 0), Quaternion.identity);
+            enemyInstance = Instantiate(enemyPrefab1, playerPos += new Vector3(40, posY1, 0), Quaternion.identity);
         }
         else if (enemyNum == 2)
         {
-            enemyInstance = Instantiate(enemyPrefab2, playerPos += new Vector3(40, posY, 0), Quaternion.identity);
+            enemyInstance = Instantiate(enemyPrefab2, playerPos += new Vector3(40, posY1, 0), Quaternion.identity);
         }
         else if (enemyNum == 3)
         {
-            enemyInstance = Instantiate(enemyPrefab3, playerPos += new Vector3(40, posY, 0), Quaternion.identity);
+            enemyInstance = Instantiate(enemyPrefab3, playerPos += new Vector3(40, posY2, 0), Quaternion.identity);
         }
         if (enemyInstance != null)
         {

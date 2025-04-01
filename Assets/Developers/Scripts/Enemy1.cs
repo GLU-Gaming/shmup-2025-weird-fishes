@@ -11,7 +11,7 @@ public class Enemy1 : EnemyBase
         particle = Resources.Load<GameObject>("Prefabs/Particles/EnemyExplosion");
         player = GameObject.FindGameObjectWithTag("Player");
         target = player.transform;
-        speed = 5;
+        speed = 9;
         audioManager = FindFirstObjectByType<AudioManager>();
         gameManager = FindFirstObjectByType<GameManager>();
     }

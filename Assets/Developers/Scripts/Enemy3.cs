@@ -40,7 +40,7 @@ public class Enemy3 : EnemyBase
         particles[1] = Resources.Load<GameObject>("Prefabs/Particles/EnemyDamage");
         isRotating = true;
         gameManager = FindFirstObjectByType<GameManager>();
-        speedEnemy = 5;
+        speedEnemy = 2.5f;
         speedBullet = 10;
         audioManager = FindFirstObjectByType<AudioManager>();
         enemyCollider = GetComponent<MeshCollider>();

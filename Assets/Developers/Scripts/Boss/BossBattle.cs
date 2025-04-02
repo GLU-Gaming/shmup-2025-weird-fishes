@@ -15,7 +15,7 @@ public class BossBattle : MonoBehaviour
     public GameObject attackPrefab; // Aanvallen prefab (bijv. vuurballen)
     public Transform attackSpawnPoint; // Waar de aanval spawnt
     public float attackCooldown = 2f;
-    private bool isAttacking = false;
+    //private bool isAttacking = false;
 
     void Start()
     {

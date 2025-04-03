@@ -5,6 +5,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -39,11 +40,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int score;
 
     private float waveTimer = 20f;
+    [SerializeField] private TextMeshProUGUI scoreView;
     private BossBattleScreenFader bossFader;
 
     void Awake()
     {
         score = PlayerPrefs.GetInt("Score", 0);
+        scoreView.text = "Score: " + score;
         // initialization of profile VFX
         volumeProfile.TryGet(out vignette);
         vignette.active = false;
@@ -204,6 +207,7 @@ public class GameManager : MonoBehaviour
     public void ScoreUp(int amount)
     {
         score += amount;
+        scoreView.text = "Score: " + score;
     }
     public int GetScore()
     {

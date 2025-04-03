@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject enemyPrefab2;
     [SerializeField] private GameObject enemyPrefab3;
 
+    [SerializeField] private BossBattle bossbattle;
+
     public float stunDuration;
     private bool isStunned;
     private AudioManager audioManager;
@@ -37,16 +39,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int score;
 
     private float waveTimer = 20f;
+    private BossBattleScreenFader bossFader;
+
     void Awake()
     {
-        score = PlayerPrefs.GetInt("Score",0);
+        score = PlayerPrefs.GetInt("Score", 0);
         // initialization of profile VFX
         volumeProfile.TryGet(out vignette);
         vignette.active = false;
-        
+
         volumeProfile.TryGet(out chrome);
         chrome.active = false;
-        
+
         volumeProfile.TryGet(out depthOfField);
         depthOfField.active = false;
 
@@ -57,7 +61,7 @@ public class GameManager : MonoBehaviour
         enemyPrefab2 = Resources.Load<GameObject>("Prefabs/Enemy (var2)");
         enemyPrefab3 = Resources.Load<GameObject>("Prefabs/Enemy (var3)");
         audioManager = FindFirstObjectByType<AudioManager>();
-
+        bossFader = FindFirstObjectByType<BossBattleScreenFader>();
     }
     void Start()
     {
@@ -72,21 +76,14 @@ public class GameManager : MonoBehaviour
         else if (currentScene == "Level2")
         {
             CreateWave(2);
-
         }
         else if (currentScene == "Level3")
         {
             CreateWave(3);
-
         }
 
         SpawnWave();
 
-        //foreach (var row in enemies)
-        //{
-        //    Debug.LogError(string.Join("", row));
-        //}
-        
         isStunned = false;
         stunDuration = 2.5f;
     }
@@ -96,15 +93,15 @@ public class GameManager : MonoBehaviour
         // stun timer
         stunDuration -= Time.deltaTime;
         waveTimer -= Time.deltaTime;
-        if(stunDuration <= 0 && isStunned)
+        if (stunDuration <= 0 && isStunned)
         {
             chrome.active = false;
             depthOfField.active = false;
             audioManager.ChangeVolumeSound();
             stunDuration = 2.5f;
-            isStunned= false;
+            isStunned = false;
         }
-        if(waveTimer <= 0)
+        if (waveTimer <= 0)
         {
             SpawnWave();
             waveTimer = 20f;
@@ -118,13 +115,19 @@ public class GameManager : MonoBehaviour
             killedWaves++;
             if (killedWaves > 5)
             {
-                if(currentScene == "Level1") {
-                    PlayerPrefs.SetInt("Score",score);
+                if (currentScene == "Level1")
+                {
+                    PlayerPrefs.SetInt("Score", score);
                     SceneManager.LoadScene("Level2");
                 }
-                else if(currentScene == "Level2") {
+                else if (currentScene == "Level2")
+                {
                     PlayerPrefs.SetInt("Score", score);
                     SceneManager.LoadScene("Level3");
+                }
+                else if (currentScene == "Level3")
+                {
+                    bossFader.StartBossFade();
                 }
             }
             else
@@ -151,7 +154,7 @@ public class GameManager : MonoBehaviour
     }
     public void SpawnEnemy(int enemyNum)
     {
-       Vector3 playerPos = playerObject.transform.position;
+        Vector3 playerPos = playerObject.transform.position;
         int posY1 = Random.Range(-10, 10);
         int posY2 = Random.Range(-5, 5);
         GameObject enemyInstance = null;
@@ -171,7 +174,6 @@ public class GameManager : MonoBehaviour
         {
             spawnedEnemies.Add(enemyInstance);
         }
-
     }
 
     private void CreateWave(int level)
@@ -179,24 +181,21 @@ public class GameManager : MonoBehaviour
         switch (level)
         {
             case 1:
-                enemies.Add(new List<int> {1,1});
+                enemies.Add(new List<int> { 1, 1 });
                 enemies.Add(new List<int> { 1, 2, 3, 2 });
                 enemies.Add(new List<int> { 1, 1, 3, 2 });
-                enemies.Add(new List<int> { 3, 3});
+                enemies.Add(new List<int> { 3, 3 });
                 enemies.Add(new List<int> { 2, 1, 3 });
                 break;
-                case 2:
-
+            case 2:
                 break;
-                case 3:
-
+            case 3:
                 break;
-
         }
     }
     public void SpawnWave()
     {
-        int wave = Random.Range(0,3);
+        int wave = Random.Range(0, 3);
         for (int i = 0; i < enemies[wave].Count; i++)
         {
             SpawnEnemy(enemies[wave][i]);

@@ -122,6 +122,12 @@ public class Enemy3 : EnemyBase
 
     public override void Spawn()
     {
+        //gameManager.SpawnEnemy(3, true);
+        //gameManager.spawnedEnemies.Remove(gameObject);
+        //Destroy(gameObject);
+
+        gameObject.transform.position = gameManager.GetRandomPos();
+
     }
 
     public override void Damaged()

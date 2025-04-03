@@ -261,6 +261,7 @@ MonoBehaviour:
     speedMultiplier: 0.2
   baseSpeed: 8
   resetPosition: -48
+  bossBackground: {fileID: 0}
 --- !u!4 &29960906 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6753653496091063986, guid: b692ca13aff1eb948bed1a1573474484, type: 3}
@@ -2949,6 +2950,7 @@ MonoBehaviour:
     speedMultiplier: 0.4
   baseSpeed: 8
   resetPosition: -48
+  bossBackground: {fileID: 0}
 --- !u!4 &509166204 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2697641180560654496, guid: 97b61ca1b6e16ce45962b990782f0479, type: 3}
@@ -3151,6 +3153,7 @@ MonoBehaviour:
     speedMultiplier: 0.2
   baseSpeed: 8
   resetPosition: -48
+  bossBackground: {fileID: 0}
 --- !u!1001 &600125846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3739,6 +3742,7 @@ MonoBehaviour:
     speedMultiplier: 0.4
   baseSpeed: 8
   resetPosition: -48
+  bossBackground: {fileID: 0}
 --- !u!4 &716264236 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3517596403123653279, guid: b4eb34187c1f7524ba4ebec0bc9ae738, type: 3}
@@ -5858,6 +5862,7 @@ MonoBehaviour:
     speedMultiplier: 1
   baseSpeed: 8
   resetPosition: -48
+  bossBackground: {fileID: 0}
 --- !u!1001 &1239466306
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6764,6 +6769,7 @@ MonoBehaviour:
     speedMultiplier: 1
   baseSpeed: 8
   resetPosition: -48
+  bossBackground: {fileID: 0}
 --- !u!4 &1509960096 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6037972992334514787, guid: 2d70e8f27ec7d534fb4219147537f4b3, type: 3}
@@ -7537,6 +7543,7 @@ MonoBehaviour:
     speedMultiplier: 0.8
   baseSpeed: 8
   resetPosition: -48
+  bossBackground: {fileID: 0}
 --- !u!1 &1694113790
 GameObject:
   m_ObjectHideFlags: 0

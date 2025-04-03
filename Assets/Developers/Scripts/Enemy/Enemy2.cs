@@ -58,6 +58,11 @@ public class Enemy2 : EnemyBase
 
     public override void Spawn()
     {
+        //gameManager.SpawnEnemy(2, true);
+        //gameManager.spawnedEnemies.Remove(gameObject);
+        //Destroy(gameObject);
+        gameObject.transform.position = gameManager.GetRandomPos();
+
     }
 
     public override void Damaged()

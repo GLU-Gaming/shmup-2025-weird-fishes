@@ -17,7 +17,7 @@ public abstract class EnemyBase : MonoBehaviour
     {
         if (gameObject.transform.position.x <= -20)
         {
-            Destroyed();
+            Spawn();
         }
     }
 }

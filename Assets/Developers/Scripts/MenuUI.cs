@@ -3,6 +3,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class MenuUI : MonoBehaviour
@@ -27,6 +28,7 @@ public class MenuUI : MonoBehaviour
     }
     public void LoadScene()
     {
+        PlayerPrefs.SetInt("Score", 0);
         SceneManager.LoadScene("Level1");
     }
 

@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     private float lifeDuration;
     void Start()
     {
-        speed = 10;
+        speed = 15;
         lifeDuration = 3f;
     }
 

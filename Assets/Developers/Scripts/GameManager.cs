@@ -5,6 +5,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -39,11 +40,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int score;
 
     private float waveTimer = 20f;
+    [SerializeField] private TextMeshProUGUI scoreView;
     private BossBattleScreenFader bossFader;
 
     void Awake()
     {
         score = PlayerPrefs.GetInt("Score", 0);
+        scoreView.text = "Score: " + score;
         // initialization of profile VFX
         volumeProfile.TryGet(out vignette);
         vignette.active = false;
@@ -152,7 +155,7 @@ public class GameManager : MonoBehaviour
         chrome.active = true;
         depthOfField.active = true;
     }
-    public void SpawnEnemy(int enemyNum)
+    public void SpawnEnemy(int enemyNum, bool respawn = false)
     {
         Vector3 playerPos = playerObject.transform.position;
         int posY1 = Random.Range(-10, 10);
@@ -170,7 +173,7 @@ public class GameManager : MonoBehaviour
         {
             enemyInstance = Instantiate(enemyPrefab3, playerPos += new Vector3(40, posY2, 0), Quaternion.identity);
         }
-        if (enemyInstance != null)
+        if (enemyInstance != null && !respawn)
         {
             spawnedEnemies.Add(enemyInstance);
         }
@@ -204,9 +207,17 @@ public class GameManager : MonoBehaviour
     public void ScoreUp(int amount)
     {
         score += amount;
+        scoreView.text = "Score: " + score;
     }
     public int GetScore()
     {
         return score;
+    }
+
+    public Vector3 GetRandomPos()
+    {
+        int posY = Random.Range(-5, 5);
+        Vector3 transf = new Vector3(40f, posY, -4.8f);
+        return transf;
     }
 }

@@ -41,10 +41,10 @@ public class AudioManager : MonoBehaviour
             audioMusic.clip = soundtracks[2];
         } else if (currentScene == "Menu")
         {
-            audioMusic.clip = soundtracks[3];
+            //audioMusic.clip = soundtracks[3];
         } else if (currentScene == "GameOver")
         {
-            audioMusic.clip = soundtracks[4];
+            //audioMusic.clip = soundtracks[4];
         }
         // "𝄞 Music sounds better with you 𝄞"
         audioMusic.Play();

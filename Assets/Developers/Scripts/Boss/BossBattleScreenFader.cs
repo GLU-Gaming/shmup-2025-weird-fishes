@@ -50,7 +50,7 @@ public class BossBattleScreenFader : MonoBehaviour
 
         _newBackground.SetActive(true);
         _boss.SetActive(true);
-        //_bossBattle.StartBoss();
+        _bossBattle.StartBoss();
 
         yield return StartCoroutine(FadeScreen(1, 0, _fadeOutDuration));
     }

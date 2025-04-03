@@ -23,19 +23,14 @@ public class BossAttack : MonoBehaviour
     {
         while (isAttacking)
         {
-            yield return new WaitForSeconds(Random.Range(2f, 4f)); // Willekeurige aanvalstijd
+            yield return new WaitForSeconds(Random.Range(2f, 4f));
 
-            int attackType = Random.Range(0, 2);
-            if (attackType == 0)
-            {
-                FireTentacleProjectile();
-            }
-            else
-            {
-                TentacleStrike();
-            }
+            FireTentacleProjectile();  // Altijd schieten
+            TentacleStrike();  // Altijd slaan met tentakels
         }
     }
+
+
 
     private void FireTentacleProjectile()
     {
@@ -46,10 +41,11 @@ public class BossAttack : MonoBehaviour
 
     private void TentacleStrike()
     {
-        // Spawnt een tentakel op x = -13 en beweegt omhoog of omlaag
         Transform spawnPoint = strikeSpawnPoints[Random.Range(0, strikeSpawnPoints.Length)];
         GameObject tentacle = Instantiate(tentacleStrikePrefab, spawnPoint.position, Quaternion.identity);
-        //tentacle.GetComponent<TentacleMovement>().StartMoving();
+
+        tentacle.AddComponent<TentacleStrikeMovement>();  // Beweging toevoegen
+
         Debug.Log("Tentacle Strike at x = -13!");
     }
 

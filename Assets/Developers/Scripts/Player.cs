@@ -109,9 +109,9 @@ public class Player : MonoBehaviour
         }
 
     }
-    private void Hitted()
+    public void Hitted(int amount = 1)
     {
-        health--; //Auch
+        health -= amount; //Auch
 
         //audioManager.PlaySound(0);
 
@@ -130,4 +130,6 @@ public class Player : MonoBehaviour
             break;
         }
     }
+
+
 }

@@ -49,6 +49,16 @@ public class ParallaxScroller : MonoBehaviour
             layerList.Add(firstLayer);
         }
     }
+    public GameObject bossBackground; // Sleep hier je nieuwe achtergrond in
+
+    public void EnableBossBackground()
+    {
+        foreach (ParallaxLayer layer in layerList)
+        {
+            layer.layerTransform.gameObject.SetActive(false); // Deactiveer normale lagen
+        }
+        bossBackground.SetActive(true); // Activeer boss achtergrond
+    }
 
 
     //private void OnDrawGizmosSelected()

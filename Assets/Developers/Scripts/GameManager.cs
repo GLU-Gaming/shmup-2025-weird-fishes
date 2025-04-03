@@ -191,6 +191,11 @@ public class GameManager : MonoBehaviour
                 enemies.Add(new List<int> { 2, 1, 3 });
                 break;
             case 2:
+                enemies.Add(new List<int> { 1, 1 });
+                enemies.Add(new List<int> { 1, 2, 3, 2 });
+                enemies.Add(new List<int> { 1, 1, 3, 2 });
+                enemies.Add(new List<int> { 3, 3 });
+                enemies.Add(new List<int> { 2, 1, 3 });
                 break;
             case 3:
                 break;

@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
         transform.position += new Vector3(0, moveY, 0);
 
         //Y-axis borders
-        float clampedY = Mathf.Clamp(transform.position.y, -11f, 11f);
+        float clampedY = Mathf.Clamp(transform.position.y, -9f, 9f);
         transform.position = new Vector3(transform.position.x, clampedY, transform.position.z);
 
         // Handle rotation on the X-axis

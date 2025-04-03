@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using UnityEditor.ShaderGraph.Internal;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public int health = 5; // Player's HP
+    public float health = 5f; // Player's HP
+    public float Maxhealth = 5f; // Player's maxHP
     public float fireCooldown = 0.75f;
     public float moveSpeed = 5f; // Snelheid van de speler
     public float rotationSpeed = 5f; // Snelheid van de rotatie
@@ -15,9 +18,11 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private GameObject[] particles;
     private Rigidbody rb;
+    [SerializeField] private Image healthBar;
 
     void Start()
     {
+        healthBar.fillAmount = 1f;
         speed = 5f;
         rb = GetComponent<Rigidbody>();
         gameManager = FindFirstObjectByType<GameManager>();
@@ -109,9 +114,11 @@ public class Player : MonoBehaviour
         }
 
     }
-    private void Hitted()
+    public void Hitted(int amount = 1)
     {
-        health--; //Auch
+        health -= amount; //Auch
+
+        healthBar.fillAmount = health / Maxhealth;
 
         //audioManager.PlaySound(0);
 
@@ -130,4 +137,6 @@ public class Player : MonoBehaviour
             break;
         }
     }
+
+
 }

@@ -13,8 +13,8 @@ public class TentacleProjectile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //other.GetComponent<Player>().TakeDamage(1);
-            //Destroy(gameObject);
+            other.GetComponent<Player>().Hitted(1);
+            Destroy(gameObject);
         }
     }
 }

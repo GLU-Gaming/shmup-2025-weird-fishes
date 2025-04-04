@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public float health = 5f; // Player's HP
-    public float Maxhealth = 5f; // Player's maxHP
+    public float health = 20f; // Player's HP
+    public float Maxhealth = 20f; // Player's maxHP
     public float fireCooldown = 0.75f;
     public float moveSpeed = 5f; // Snelheid van de speler
     public float rotationSpeed = 5f; // Snelheid van de rotatie
@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        health = 20f;
+        Maxhealth = 20f;
         healthBar.fillAmount = 1f;
         speed = 5f;
         rb = GetComponent<Rigidbody>();
@@ -81,7 +83,7 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Hitted();
+            Hitted(2);
         }
 
         if (other.gameObject.CompareTag("Enemy Bullet"))
@@ -98,13 +100,17 @@ public class Player : MonoBehaviour
 
             if (explosionRadius != null && other == explosionRadius)
             {
+                MeshRenderer pufferModel1 = other.GetComponent<MeshRenderer>();
+                MeshRenderer pufferModel2 = other.transform.GetChild(0).GetComponent<MeshRenderer>();
+                pufferModel1.enabled = false;
+                pufferModel2.enabled = true;
                 Debug.Log("Ready?");
                 audioManager.PlaySound(1);
             }
             if (kamikadzeCollider != null && other == kamikadzeCollider)
             {
                 audioManager.ChangeVolumeSound("down");
-                Hitted();
+                Hitted(3);
                 Debug.Log("BABAH");
                 gameManager.Stunned();
                 gameManager.spawnedEnemies.Remove(other.gameObject);
@@ -125,16 +131,15 @@ public class Player : MonoBehaviour
         //spawning exsplosion particle 
         //Instantiate(BoomVFX);  
 
-        switch (health)
+        if (health <= 4)
         {
-            case 1:
-                gameManager.MakeScreenRed(); //Changing volume profile for "blood" effect
-            break;
+            gameManager.MakeScreenRed(); //Changing volume profile for "blood" effect
 
-            case 0:
-                // game over
-                SceneManager.LoadScene("GameOver");
-            break;
+        }
+         if (health <= 0)
+        {
+            // game over
+            SceneManager.LoadScene("GameOver");
         }
     }
 

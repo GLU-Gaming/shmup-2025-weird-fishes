@@ -19,9 +19,12 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject[] particles;
     private Rigidbody rb;
     [SerializeField] private Image healthBar;
+    private float harpoonCoolDown;
+    [SerializeField] private GameObject harpoon;
 
     void Start()
     {
+        harpoonCoolDown = 10f;
         health = 20f;
         Maxhealth = 20f;
         healthBar.fillAmount = 1f;
@@ -63,20 +66,17 @@ public class Player : MonoBehaviour
 
             fireCooldown = 0.75f;
         }
+        if (Input.GetKey(KeyCode.Q) && harpoonCoolDown <= 0)
+        {
+            HarpoonShot();
+        }
 
         // Smoothly interpolate to the target rotation (only X-axis changes)
         Quaternion targetRotation = Quaternion.Euler(targetRotationX, 0, 0);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         fireCooldown -= Time.deltaTime;
+        harpoonCoolDown -= Time.deltaTime;
     }
-    //void FixedUpdate()
-    //{
-    //    float moveY = Input.GetAxis("Vertical"); // "W" and "S"
-
-    //    Vector3 move = new Vector3(0, moveY, 0) * moveSpeed * Time.fixedDeltaTime;
-
-    //    rb.MovePosition(rb.position + move);
-    //}
 
     // Player has been hitted by the enemy
     private void OnTriggerEnter(Collider other)
@@ -141,6 +141,11 @@ public class Player : MonoBehaviour
             // game over
             SceneManager.LoadScene("GameOver");
         }
+    }
+
+    private void HarpoonShot()
+    {
+        harpoonCoolDown = 10f;
     }
 
 

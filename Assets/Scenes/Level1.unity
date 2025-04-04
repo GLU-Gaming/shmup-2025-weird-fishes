@@ -863,6 +863,7 @@ MonoBehaviour:
   particles:
   - {fileID: 1543639834}
   healthBar: {fileID: 1523866224}
+  harpoon: {fileID: 192751722}
 --- !u!54 &103177578
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1194,7 +1195,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -781364732206193868, guid: 64c9bc24565b8da40b65468ff674e3bd, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -781364732206193868, guid: 64c9bc24565b8da40b65468ff674e3bd, type: 3}
+      propertyPath: m_TagString
+      value: Harpoon
       objectReference: {fileID: 0}
     - target: {fileID: 390971762092042760, guid: 64c9bc24565b8da40b65468ff674e3bd, type: 3}
       propertyPath: m_Layer
@@ -1309,6 +1314,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1613587886}
   m_SourcePrefab: {fileID: 100100000, guid: 64c9bc24565b8da40b65468ff674e3bd, type: 3}
+--- !u!1 &192751722 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -781364732206193868, guid: 64c9bc24565b8da40b65468ff674e3bd, type: 3}
+  m_PrefabInstance: {fileID: 192751721}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &194589731 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7728379506281897477, guid: 6d6750179c1d3de44ab0ecf93a66615a, type: 3}

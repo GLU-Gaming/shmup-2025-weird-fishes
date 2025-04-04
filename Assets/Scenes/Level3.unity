@@ -5247,7 +5247,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -781364732206193868, guid: 64c9bc24565b8da40b65468ff674e3bd, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -781364732206193868, guid: 64c9bc24565b8da40b65468ff674e3bd, type: 3}
+      propertyPath: m_TagString
+      value: Harpoon
       objectReference: {fileID: 0}
     - target: {fileID: 390971762092042760, guid: 64c9bc24565b8da40b65468ff674e3bd, type: 3}
       propertyPath: m_Layer
@@ -5395,6 +5399,7 @@ MonoBehaviour:
   particles:
   - {fileID: 1949750270}
   healthBar: {fileID: 105986109}
+  harpoon: {fileID: 0}
 --- !u!54 &2057544154
 Rigidbody:
   m_ObjectHideFlags: 0

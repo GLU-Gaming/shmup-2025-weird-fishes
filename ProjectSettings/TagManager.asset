@@ -9,6 +9,7 @@ TagManager:
   - Player Bullet
   - Kamikadze
   - Border
+  - Harpoon
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Enemy
   - Enemy Bullet
   - Player
-  - 
+  - Harpoon
   - 
   - 
   - 

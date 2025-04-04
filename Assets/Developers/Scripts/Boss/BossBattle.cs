@@ -15,7 +15,9 @@ public class BossBattle : MonoBehaviour
     public GameObject attackPrefab; // Aanvallen prefab (bijv. vuurballen)
     public Transform attackSpawnPoint; // Waar de aanval spawnt
     public float attackCooldown = 2f;
-    //private bool isAttacking = false;
+
+    [Header("Boss Attack Script")]
+    [SerializeField] private BossAttack bossAttackScript;
 
     void Start()
     {
@@ -29,9 +31,18 @@ public class BossBattle : MonoBehaviour
         Debug.Log("Boss Battle Started!");
         gameObject.SetActive(true); // Zorg dat de boss actief wordt
         currentHealth = maxHealth;
-        //UpdateHealthBar();
-    }
+        healthBar.value = currentHealth;
 
+        StartCoroutine(BossAttackLoop());
+        if (bossAttackScript != null)
+        {
+            bossAttackScript.StartAttacking();
+        }
+        else
+        {
+            Debug.LogWarning("BossAttack script is not assigned!");
+        }
+    }
 
     public void TakeDamage(int damage)
     {
@@ -49,6 +60,10 @@ public class BossBattle : MonoBehaviour
     {
         Debug.Log("Boss defeated!");
         gameObject.SetActive(false);
+        if (bossAttackScript != null)
+        {
+            bossAttackScript.StopAttacking();
+        }
     }
 
     IEnumerator BossAttackLoop()
@@ -69,4 +84,3 @@ public class BossBattle : MonoBehaviour
         }
     }
 }
-

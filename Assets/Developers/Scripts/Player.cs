@@ -122,6 +122,18 @@ public class Player : MonoBehaviour
     }
     public void Hitted(int amount = 1)
     {
+        if (amount == 3)
+        {
+           GameObject particleExplosion = Instantiate(particles[2], transform.position, transform.rotation);
+            ParticleSystem particleSystem = particleExplosion.GetComponent<ParticleSystem>();
+            particleSystem.Play();
+        }
+        else
+        {
+            GameObject particleDamage = Instantiate(particles[1], transform.position, transform.rotation);
+            ParticleSystem particleSystem = particleDamage.GetComponent<ParticleSystem>();
+            particleSystem.Play();
+        }
         health -= amount; //Auch
 
         healthBar.fillAmount = health / Maxhealth;
@@ -145,6 +157,9 @@ public class Player : MonoBehaviour
 
     private void HarpoonShot()
     {
+        GameObject particleShot = Instantiate(particles[3], transform.position, transform.rotation);
+        ParticleSystem particleSystem = particleShot.GetComponent<ParticleSystem>();
+        particleSystem.Play();
         harpoonCoolDown = 10f;
     }
 

@@ -18,15 +18,33 @@ public class RotateConfig : MonoBehaviour
         {
             if (gearRow == 1)
             {
-                gearTrasforms1[0].Rotate(0, 0, rotationSpeed * Time.deltaTime);
-                gearTrasforms1[1].Rotate(0, 0, rotationSpeed * Time.deltaTime);
-                gearTrasforms1[2].Rotate(0, 0, rotationSpeed * Time.deltaTime);
-                gearTrasforms1[3].Rotate(0, 0, rotationSpeed * Time.deltaTime);
+                if (gearTrasforms1[0] != null)
+                {
+                    gearTrasforms1[0].Rotate(0, 0, rotationSpeed * Time.deltaTime);
+                }if (gearTrasforms1[1] != null)
+                {
+                    gearTrasforms1[1].Rotate(0, 0, rotationSpeed * Time.deltaTime);
+                }if (gearTrasforms1[2] != null)
+                {
+                    gearTrasforms1[2].Rotate(0, 0, rotationSpeed * Time.deltaTime);
+                }if (gearTrasforms1[3] != null)
+                {
+                    gearTrasforms1[3].Rotate(0, 0, rotationSpeed * Time.deltaTime);
+                }
             }
             else {
-                gearTrasforms2[0].Rotate(0, 0, rotationSpeed * Time.deltaTime);
-                gearTrasforms2[1].Rotate(0, 0, rotationSpeed * Time.deltaTime);
-                gearTrasforms2[2].Rotate(0, 0, rotationSpeed * Time.deltaTime);
+                if (gearTrasforms2[0] != null)
+                {
+                    gearTrasforms2[0].Rotate(0, 0, rotationSpeed * Time.deltaTime);
+                }
+                if (gearTrasforms2[1] != null)
+                {
+                    gearTrasforms2[1].Rotate(0, 0, rotationSpeed * Time.deltaTime);
+                }
+                if (gearTrasforms2[2] != null)
+                {
+                    gearTrasforms2[2].Rotate(0, 0, rotationSpeed * Time.deltaTime);
+                }
             }
         }
     }

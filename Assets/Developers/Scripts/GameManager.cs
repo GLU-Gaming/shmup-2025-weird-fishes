@@ -214,6 +214,11 @@ public class GameManager : MonoBehaviour
         score += amount;
         scoreView.text = "Score: " + score;
     }
+    public void ScoreDown(int amount)
+    {
+        score -= amount;
+        scoreView.text = "Score: " + score;
+    }
     public int GetScore()
     {
         return score;

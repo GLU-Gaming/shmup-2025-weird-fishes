@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class TentacleMovement : MonoBehaviour
 {
-    private float moveSpeed = 3f;
-    private float moveDistance = 5f;
+    public float moveSpeed = 3f;
+    public float moveDistance = 5f;
+
     private Vector3 startPos;
     private int direction = 1;
 
@@ -18,7 +19,7 @@ public class TentacleMovement : MonoBehaviour
 
         if (Mathf.Abs(transform.position.y - startPos.y) >= moveDistance)
         {
-            direction *= -1; // Richting omdraaien als limiet bereikt is
+            direction *= -1;
         }
     }
 }

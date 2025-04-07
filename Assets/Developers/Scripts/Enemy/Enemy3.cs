@@ -22,7 +22,7 @@ public class Enemy3 : EnemyBase
     [SerializeField] private Transform[] fireEndPosition;
     private float stepEnemy;
     private float stepBullet;
-    private GameObject[] particles;
+    [SerializeField] private GameObject[] particles;
 
     private Renderer enRenderer;
     private Color originalColor;
@@ -35,9 +35,12 @@ public class Enemy3 : EnemyBase
         originalColor = enRenderer.material.color;
         GameObject leftBorder = GameObject.FindGameObjectWithTag("Border");
         leftPoint = leftBorder.transform;
-        particles = new GameObject[2];
+        particles = new GameObject[3];
         particles[0] = Resources.Load<GameObject>("Prefabs/Particles/EnemyExplosion");
         particles[1] = Resources.Load<GameObject>("Prefabs/Particles/EnemyDamage");
+        Transform child = transform.Find("StarFishRotation");
+        particles[2] = child.gameObject;
+        particles[2].SetActive(false);
         isRotating = true;
         gameManager = FindFirstObjectByType<GameManager>();
         speedEnemy = 2.5f;
@@ -53,6 +56,7 @@ public class Enemy3 : EnemyBase
         fireRate -= Time.deltaTime;
         if (isRotating && fireRate <= 0)
         {
+            particles[2].SetActive(true);
             Shoot();
         }
         stepEnemy = speedEnemy * Time.deltaTime;
@@ -83,6 +87,7 @@ public class Enemy3 : EnemyBase
     {
         isSlowingDown = true;
         isRotating = false;
+        particles[2].SetActive(false);
         float startSpeed = targetSpeed;
         float elapsedTime = 0f;
         float duration = 1f;

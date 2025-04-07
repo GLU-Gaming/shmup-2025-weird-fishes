@@ -15,13 +15,17 @@ public class TentacleStrikeMovement : MonoBehaviour
             movingDown = !movingDown;
         }
     }
-    private void OnTriggerEnter2D(Collider2D other)
+
+    private void OnTriggerEnter(Collider other) // 3D collision
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<Player>().Hitted(2);  // Tentakels doen meer damage
-            Debug.Log("Player hit by tentacle strike!");
+            Player playerScript = other.GetComponent<Player>();
+            if (playerScript != null)
+            {
+                playerScript.Hitted(2); // Meer damage
+                Debug.Log("Player hit by tentacle strike!");
+            }
         }
     }
-
 }

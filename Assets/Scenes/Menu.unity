@@ -155,7 +155,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateClass: {fileID: 0}
-  steams: []
+  steams:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  steams2:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &94136214
 MonoBehaviour:
   m_ObjectHideFlags: 0

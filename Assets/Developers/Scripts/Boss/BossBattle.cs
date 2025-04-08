@@ -75,7 +75,7 @@ public class BossBattle : MonoBehaviour
         }
     }
 
-    void BossAttack()
+    public void BossAttack()
     {
         if (attackPrefab != null && attackSpawnPoint != null)
         {

@@ -61,13 +61,13 @@ public class AudioManager : MonoBehaviour
                 audioSFX.PlayOneShot(SFX[0]);
                 break;
             case 1:
-                audioSFX.PlayOneShot(SFX[1]);
+                //audioSFX.PlayOneShot(SFX[1]);
                 break;
             case 2:
-                audioSFX.PlayOneShot(SFX[2]);
+                //audioSFX.PlayOneShot(SFX[2]);
                 break;
             case 3:
-                audioSFX.PlayOneShot(SFX[3]);
+                //audioSFX.PlayOneShot(SFX[3]);
                 break;
 
         }

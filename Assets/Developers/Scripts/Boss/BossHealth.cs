@@ -40,4 +40,11 @@ public class BossHealth : MonoBehaviour
         Debug.Log("Boss Defeated!");
         gameObject.SetActive(false);
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player Bullet"))
+        {
+            Destroy(other.gameObject);
+        }
+    }
 }

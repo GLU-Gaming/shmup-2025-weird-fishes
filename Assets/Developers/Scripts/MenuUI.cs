@@ -13,6 +13,7 @@ public class MenuUI : MonoBehaviour
     //[SerializeField] private Button quitBtn;
     private string sceneName;
     [SerializeField] private GameObject[] steams;
+    [SerializeField] private GameObject[] steams2;
     private float steamCooldown;
     void Start()
     {
@@ -23,17 +24,19 @@ public class MenuUI : MonoBehaviour
         steams[1].SetActive(false);
         steams[2].SetActive(false);
         steams[3].SetActive(false);
+        
+        steams2[0].SetActive(true);
+        steams2[1].SetActive(false);
+        steams2[2].SetActive(false);
+        steams2[3].SetActive(false);
         rotateClass = FindFirstObjectByType<RotateConfig>();
         //getting Scene name
         sceneName = SceneManager.GetActiveScene().name;
     }
      void Update()
     {
-        if (steams != null)
-        {
-            steamCooldown -= Time.deltaTime;
-        }
-        if (steams != null && steamCooldown <= 0)
+        steamCooldown -= Time.deltaTime;
+        if (steamCooldown <= 0)
         {
             AnimateSteam();
         }
@@ -68,6 +71,28 @@ public class MenuUI : MonoBehaviour
             steams[3].SetActive(false);
             steams[0].SetActive(true);
         }
+
+        if (steams2[0].activeSelf)
+        {
+            steams2[0].SetActive(false);
+            steams2[1].SetActive(true);
+        } else if (steams2[1].activeSelf)
+        {
+            steams2[1].SetActive(false);
+            steams2[2].SetActive(true);
+        }
+        else if (steams2[2].activeSelf)
+        {
+            steams2[2].SetActive(false);
+            steams2[3].SetActive(true);
+        }
+        else if (steams2[3].activeSelf)
+        {
+            steams2[3].SetActive(false);
+            steams2[0].SetActive(true);
+        }
+
+
         steamCooldown = 0.1f;
     }
 

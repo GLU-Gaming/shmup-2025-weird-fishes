@@ -6,6 +6,7 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 using TMPro;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -116,7 +117,7 @@ public class GameManager : MonoBehaviour
         if (spawnedEnemies.Count == 0)
         {
             killedWaves++;
-            if (killedWaves > 5)
+            if (killedWaves > 7)
             {
                 if (currentScene == "Level1")
                 {
@@ -206,10 +207,16 @@ public class GameManager : MonoBehaviour
         if (currentScene != "Level3")
         {
             int wave = Random.Range(0, 3);
-            for (int i = 0; i < enemies[wave].Count; i++)
-            {
-                SpawnEnemy(enemies[wave][i]);
-            }
+            StartCoroutine(SpawnWaveCoroutine(enemies[wave]));
+        }
+    }
+
+    private IEnumerator SpawnWaveCoroutine(List<int> waveEnemies)
+    {
+        foreach (int enemyType in waveEnemies)
+        {
+            SpawnEnemy(enemyType);
+            yield return new WaitForSeconds(0.5f);
         }
     }
     public void ScoreUp(int amount)

@@ -21,9 +21,9 @@ public class BossBattle : MonoBehaviour
 
     void Start()
     {
-        currentHealth = maxHealth;
-        healthBar.maxValue = maxHealth;
-        healthBar.value = currentHealth;
+        //currentHealth = maxHealth;
+        //healthBar.maxValue = maxHealth;
+        //healthBar.value = currentHealth;
     }
 
     public void StartBoss()

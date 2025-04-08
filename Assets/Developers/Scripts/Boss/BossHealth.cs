@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class BossHealth : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 10;
-    private int currentHealth;
+    [SerializeField] private float maxHealth = 250f;
+    [SerializeField] private float currentHealth;
 
     //[SerializeField] private SpriteRenderer healthBarRenderer;
     //[SerializeField] private Sprite[] healthSprites; // Array van custom health sprites
@@ -13,8 +13,8 @@ public class BossHealth : MonoBehaviour
 
     void Start()
     {
-        maxHealth = 10;
-        currentHealth = 10;
+        maxHealth = 250f;
+        currentHealth = 250f;
         bossHPBar.fillAmount = 1f;
         currentHealth = maxHealth;
         UpdateHealthBar();

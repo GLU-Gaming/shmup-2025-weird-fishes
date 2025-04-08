@@ -2870,24 +2870,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 653220803}
-  - {fileID: 1324646106}
-  - {fileID: 726857948}
-  - {fileID: 577283654}
-  - {fileID: 1159549271}
-  - {fileID: 328171401}
-  - {fileID: 1380376743}
-  - {fileID: 2113837505}
-  - {fileID: 1878771132}
-  - {fileID: 2091365866}
-  - {fileID: 1876733173}
-  - {fileID: 1894859595}
-  - {fileID: 716264236}
-  - {fileID: 318695857}
-  - {fileID: 1416194938}
-  - {fileID: 1090736286}
-  - {fileID: 534783794}
-  m_Father: {fileID: 1810297310}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &483057303
 MonoBehaviour:
@@ -3724,14 +3706,8 @@ Transform:
   m_GameObject: {fileID: 679001263}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -90.481224, y: 31.710873, z: -16.571877}
-  m_LocalScale: {x: 3.3783472, y: 3.3783472, z: 3.3783472}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1137314736}
-  - {fileID: 1856870971}
-  - {fileID: 1134647861}
-  m_Father: {fileID: 723728971}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &679001265
 MonoBehaviour:
@@ -4926,8 +4902,6 @@ Transform:
   m_LocalPosition: {x: -48, y: 0, z: 0}
   m_LocalScale: {x: 1.2291, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 28316926}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1091325589
 SpriteRenderer:

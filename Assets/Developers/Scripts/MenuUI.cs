@@ -36,7 +36,7 @@ public class MenuUI : MonoBehaviour
      void Update()
     {
         steamCooldown -= Time.deltaTime;
-        if (steamCooldown <= 0)
+        if (steamCooldown <= 0 && steams[0] != null && steams2[0] != null)
         {
             AnimateSteam();
         }

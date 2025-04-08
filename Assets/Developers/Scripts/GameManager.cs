@@ -130,7 +130,7 @@ public class GameManager : MonoBehaviour
                 }
                 else if (currentScene == "Level3")
                 {
-                    bossFader.StartBossFade();
+                    //bossFader.StartBossFade();
                 }
             }
             else
@@ -203,10 +203,13 @@ public class GameManager : MonoBehaviour
     }
     public void SpawnWave()
     {
-        int wave = Random.Range(0, 3);
-        for (int i = 0; i < enemies[wave].Count; i++)
+        if (currentScene != "Level3")
         {
-            SpawnEnemy(enemies[wave][i]);
+            int wave = Random.Range(0, 3);
+            for (int i = 0; i < enemies[wave].Count; i++)
+            {
+                SpawnEnemy(enemies[wave][i]);
+            }
         }
     }
     public void ScoreUp(int amount)

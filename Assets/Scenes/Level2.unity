@@ -8702,7 +8702,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layerList:
-  - layerTransform: {fileID: 0}
     speedMultiplier: 0.2
   - layerTransform: {fileID: 350326479}
     speedMultiplier: 0.2
@@ -9510,7 +9509,6 @@ MonoBehaviour:
   layerList:
   - layerTransform: {fileID: 2004262659}
     speedMultiplier: 0.2
-  - layerTransform: {fileID: 0}
     speedMultiplier: 0.2
   - layerTransform: {fileID: 357784577}
     speedMultiplier: 0.2

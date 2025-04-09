@@ -20,15 +20,22 @@ public class MenuUI : MonoBehaviour
         steamCooldown = 0.1f;
         //steams = new Image[steams.Length];
         //steams = new GameObject[steams.Length];
-        steams[0].SetActive(true);
-        steams[1].SetActive(false);
-        steams[2].SetActive(false);
-        steams[3].SetActive(false);
+        if (steams[0] != null)
+        {
+            steams[0].SetActive(true);
+            steams[1].SetActive(false);
+            steams[2].SetActive(false);
+            steams[3].SetActive(false);
+        }
+
+        if (steams2[0] != null)
+        {
+            steams2[0].SetActive(true);
+            steams2[1].SetActive(false);
+            steams2[2].SetActive(false);
+            steams2[3].SetActive(false);
+        }
         
-        steams2[0].SetActive(true);
-        steams2[1].SetActive(false);
-        steams2[2].SetActive(false);
-        steams2[3].SetActive(false);
         rotateClass = FindFirstObjectByType<RotateConfig>();
         //getting Scene name
         sceneName = SceneManager.GetActiveScene().name;
@@ -48,7 +55,7 @@ public class MenuUI : MonoBehaviour
     public void LoadScene()
     {
         PlayerPrefs.SetInt("Score", 0);
-        SceneManager.LoadScene("Level1");
+        TransitionManager.Instance.LoadSceneWithFade("Level1");
     }
     private void AnimateSteam()
     {

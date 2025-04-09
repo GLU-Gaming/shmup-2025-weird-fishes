@@ -151,7 +151,7 @@ public class Player : MonoBehaviour
          if (health <= 0)
         {
             // game over
-            SceneManager.LoadScene("GameOver");
+            gameManager.EndGame();
         }
     }
 

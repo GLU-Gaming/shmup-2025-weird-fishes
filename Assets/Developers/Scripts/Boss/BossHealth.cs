@@ -10,9 +10,11 @@ public class BossHealth : MonoBehaviour
     //[SerializeField] private SpriteRenderer healthBarRenderer;
     //[SerializeField] private Sprite[] healthSprites; // Array van custom health sprites
     [SerializeField] private Image bossHPBar;
+    private GameManager gameManager;
 
     void Start()
     {
+        gameManager = FindFirstObjectByType<GameManager>();
         maxHealth = 125f;
         currentHealth = 125f;
         bossHPBar.fillAmount = 1f;
@@ -40,7 +42,7 @@ public class BossHealth : MonoBehaviour
 
     void Die()
     {
-        SceneManager.LoadScene("winYAY");
+        gameManager.WinGame(); 
     }
     private void OnTriggerEnter(Collider other)
     {

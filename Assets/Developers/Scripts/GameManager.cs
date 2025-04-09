@@ -122,12 +122,12 @@ public class GameManager : MonoBehaviour
                 if (currentScene == "Level1")
                 {
                     PlayerPrefs.SetInt("Score", score);
-                    SceneManager.LoadScene("Level2");
+                    TransitionManager.Instance.LoadSceneWithFade("Level2");
                 }
                 else if (currentScene == "Level2")
                 {
                     PlayerPrefs.SetInt("Score", score);
-                    SceneManager.LoadScene("Level3");
+                    TransitionManager.Instance.LoadSceneWithFade("Level3");
                 }
                 else if (currentScene == "Level3")
                 {
@@ -159,7 +159,7 @@ public class GameManager : MonoBehaviour
     public void SpawnEnemy(int enemyNum, bool respawn = false)
     {
         Vector3 playerPos = playerObject.transform.position;
-        int posY1 = Random.Range(-10, 10);
+        int posY1 = Random.Range(-6, 6);
         int posY2 = Random.Range(-5, 5);
         GameObject enemyInstance = null;
         if (enemyNum == 1)
@@ -192,11 +192,11 @@ public class GameManager : MonoBehaviour
                 enemies.Add(new List<int> { 2, 1, 3 });
                 break;
             case 2:
-                enemies.Add(new List<int> { 1, 1 });
-                enemies.Add(new List<int> { 1, 2, 3, 2 });
-                enemies.Add(new List<int> { 1, 1, 3, 2 });
-                enemies.Add(new List<int> { 3, 3 });
-                enemies.Add(new List<int> { 2, 1, 3 });
+                enemies.Add(new List<int> { 1, 1, 1,2});
+                enemies.Add(new List<int> { 1, 2, 3,1, 2 });
+                enemies.Add(new List<int> { 1, 1, 3, 2,1 });
+                enemies.Add(new List<int> { 3, 3 ,2,1});
+                enemies.Add(new List<int> { 2, 1, 3,2 });
                 break;
             case 3:
                 break;
@@ -236,8 +236,16 @@ public class GameManager : MonoBehaviour
 
     public Vector3 GetRandomPos()
     {
-        int posY = Random.Range(-5, 5);
+        float posY = Random.Range(-3.5f, 4f);
         Vector3 transf = new Vector3(40f, posY, -4.8f);
         return transf;
+    }
+    public void EndGame()
+    {
+        TransitionManager.Instance.LoadSceneWithFade("GameOver");
+    }
+    public void WinGame()
+    {
+        TransitionManager.Instance.LoadSceneWithFade("winYAY");
     }
 }

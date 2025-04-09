@@ -13,8 +13,8 @@ public class BossHealth : MonoBehaviour
 
     void Start()
     {
-        maxHealth = 125f;
-        currentHealth = 125f;
+        maxHealth = 140f;
+        currentHealth = 140f;
         bossHPBar.fillAmount = 1f;
         currentHealth = maxHealth;
         UpdateHealthBar();

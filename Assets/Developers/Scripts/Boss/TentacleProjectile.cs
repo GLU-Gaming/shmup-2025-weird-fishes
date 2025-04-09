@@ -17,6 +17,7 @@ public class TentacleShooter : MonoBehaviour
 
     private void Start()
     {
+        projectilePrefab = Resources.Load<GameObject>("Prefabs/bossBullet");
         foreach (var setting in spawnSettings)
         {
             setting.nextFireTime = Time.time + setting.initialDelay;

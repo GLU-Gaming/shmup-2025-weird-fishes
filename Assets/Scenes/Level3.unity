@@ -1031,13 +1031,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 199737094}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.119, y: 1.656, z: 0}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.696, y: 1.656, z: 0}
   m_LocalScale: {x: 0.16666667, y: 0.16666667, z: 0.16666667}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1200278131}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &239831385
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,13 +1062,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239831385}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.165, y: 1.261, z: 0}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.76, y: 1.261, z: 0}
   m_LocalScale: {x: 0.16666667, y: 0.16666667, z: 0.16666667}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1200278131}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &242691530
 GameObject:
   m_ObjectHideFlags: 0
@@ -1946,13 +1946,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 563800478}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.034, y: 0.663, z: 0}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.81, y: 0.663, z: 0}
   m_LocalScale: {x: 0.16666667, y: 0.16666667, z: 0.16666667}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1200278131}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &609010162
 GameObject:
   m_ObjectHideFlags: 0
@@ -3619,6 +3619,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 940dbfc4a36648b418c9bb1647403f40, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1200278136}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 940dbfc4a36648b418c9bb1647403f40, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1200278144}
   m_SourcePrefab: {fileID: 100100000, guid: 940dbfc4a36648b418c9bb1647403f40, type: 3}
 --- !u!4 &1200278131 stripped
 Transform:
@@ -3728,6 +3731,33 @@ MonoBehaviour:
   tentacleStrikePrefab: {fileID: 0}
   strikeSpawnPoints: []
   projectileSpawnPoint: {fileID: 0}
+--- !u!114 &1200278144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200278132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e7a22953f185a439e8e82a8532e2c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 2269052458077867998, guid: 22ae790b676755449b55f59289024efb, type: 3}
+  spawnSettings:
+  - spawnPoint: {fileID: 199737095}
+    fireRate: 3.5
+    initialDelay: 0.5
+    nextFireTime: 0
+  - spawnPoint: {fileID: 239831386}
+    fireRate: 3.5
+    initialDelay: 0.5
+    nextFireTime: 0
+  - spawnPoint: {fileID: 563800479}
+    fireRate: 3.5
+    initialDelay: 0.5
+    nextFireTime: 0
+  spawnOffsetDistance: 0.5
 --- !u!1001 &1230748054
 PrefabInstance:
   m_ObjectHideFlags: 0

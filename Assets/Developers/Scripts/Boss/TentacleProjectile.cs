@@ -1,20 +1,45 @@
 using UnityEngine;
 
-public class TentacleProjectile : MonoBehaviour
+public class TentacleShooter : MonoBehaviour
 {
-    public float speed = 7f;
-
-    void Update()
+    [System.Serializable]
+    public class SpawnSettings
     {
-        transform.position += Vector3.left * speed * Time.deltaTime;
+        public Transform spawnPoint;
+        public float fireRate = 2f;  // Hoe vaak dit punt schiet (in seconden)
+        public float initialDelay = 0f; // Vertraging voordat dit punt begint met schieten
+        [HideInInspector] public float nextFireTime;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public GameObject projectilePrefab;
+    public SpawnSettings[] spawnSettings;
+    public float spawnOffsetDistance = 0.5f; // Hoe ver links van het spawn point het projectiel spawnt
+
+    private void Start()
     {
-        if (other.CompareTag("Player"))
+        foreach (var setting in spawnSettings)
         {
-            other.GetComponent<Player>().Hitted(1);
-            Destroy(gameObject);
+            setting.nextFireTime = Time.time + setting.initialDelay;
         }
+    }
+
+    private void Update()
+    {
+        foreach (var setting in spawnSettings)
+        {
+            if (Time.time >= setting.nextFireTime)
+            {
+                FireProjectile(setting.spawnPoint);
+                setting.nextFireTime = Time.time + setting.fireRate;
+            }
+        }
+    }
+
+    void FireProjectile(Transform spawnPoint)
+    {
+        // Spawn de projectile iets naar links vanaf het spawn point
+        Vector3 spawnPosition = spawnPoint.position + Vector3.left * spawnOffsetDistance;
+
+        Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
     }
 }

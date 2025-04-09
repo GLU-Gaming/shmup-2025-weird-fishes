@@ -1491,6 +1491,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 103177580}
     m_Modifications:
+    - target: {fileID: 1371739692356790775, guid: 5b857e8bab8709f40ba8f9d312565b85, type: 3}
+      propertyPath: Priority
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 3892602611541049624, guid: 5b857e8bab8709f40ba8f9d312565b85, type: 3}
+      propertyPath: Priority
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 5683735739466338531, guid: 5b857e8bab8709f40ba8f9d312565b85, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.566942
@@ -2870,6 +2878,24 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1324646106}
+  - {fileID: 1159549271}
+  - {fileID: 1894859595}
+  - {fileID: 1878771132}
+  - {fileID: 716264236}
+  - {fileID: 534783794}
+  - {fileID: 318695857}
+  - {fileID: 653220803}
+  - {fileID: 2091365866}
+  - {fileID: 1380376743}
+  - {fileID: 1090736286}
+  - {fileID: 1416194938}
+  - {fileID: 577283654}
+  - {fileID: 328171401}
+  - {fileID: 1876733173}
+  - {fileID: 726857948}
+  - {fileID: 2113837505}
+  m_Father: {fileID: 1810297310}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &483057303
 MonoBehaviour:
@@ -3706,8 +3732,14 @@ Transform:
   m_GameObject: {fileID: 679001263}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1134647861}
+  - {fileID: 1137314736}
+  - {fileID: 1856870971}
+  m_Father: {fileID: 723728971}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &679001265
 MonoBehaviour:
@@ -4902,6 +4934,8 @@ Transform:
   m_LocalPosition: {x: -48, y: 0, z: 0}
   m_LocalScale: {x: 1.2291, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 28316926}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1091325589
 SpriteRenderer:

@@ -2109,6 +2109,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 517916580}
   - {fileID: 2112613473}
   - {fileID: 236520902}
   - {fileID: 889770298}
@@ -3520,6 +3521,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &517916580 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 875351d2484805943ad3567f8a739065, type: 3}
+  m_PrefabInstance: {fileID: 1430787704}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519468444
 GameObject:
   m_ObjectHideFlags: 0
@@ -7596,6 +7602,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3297932800463708186, guid: 763467746f72cf84ba5a26c721a5e1be, type: 3}
   m_PrefabInstance: {fileID: 154387733}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1430787704
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 333609078}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 875351d2484805943ad3567f8a739065, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 290.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 875351d2484805943ad3567f8a739065, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 875351d2484805943ad3567f8a739065, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.88
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 875351d2484805943ad3567f8a739065, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.86
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 875351d2484805943ad3567f8a739065, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.12645261
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 875351d2484805943ad3567f8a739065, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.1700743
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 875351d2484805943ad3567f8a739065, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.59042656
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 875351d2484805943ad3567f8a739065, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.77876884
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 875351d2484805943ad3567f8a739065, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -61.235
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 875351d2484805943ad3567f8a739065, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 59.403
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 875351d2484805943ad3567f8a739065, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 124.247
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 875351d2484805943ad3567f8a739065, type: 3}
+      propertyPath: m_Name
+      value: Boss (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 875351d2484805943ad3567f8a739065, type: 3}
 --- !u!1 &1438497599
 GameObject:
   m_ObjectHideFlags: 0
@@ -8702,11 +8769,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layerList:
-    speedMultiplier: 0.2
-  - layerTransform: {fileID: 350326479}
-    speedMultiplier: 0.2
-  - layerTransform: {fileID: 821804117}
-    speedMultiplier: 0.2
+  - layerTransform: {fileID: 0}
+    speedMultiplier: 0
+  - layerTransform: {fileID: 0}
+    speedMultiplier: 0
+  - layerTransform: {fileID: 0}
+    speedMultiplier: 0
+  - layerTransform: {fileID: 0}
+    speedMultiplier: 0
+  - layerTransform: {fileID: 0}
+    speedMultiplier: 0
   baseSpeed: 8
   resetPosition: -48
   bossBackground: {fileID: 0}
@@ -9508,7 +9580,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerList:
   - layerTransform: {fileID: 2004262659}
-    speedMultiplier: 0.2
     speedMultiplier: 0.2
   - layerTransform: {fileID: 357784577}
     speedMultiplier: 0.2

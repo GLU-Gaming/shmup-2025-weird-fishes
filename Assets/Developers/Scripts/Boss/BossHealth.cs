@@ -42,6 +42,7 @@ public class BossHealth : MonoBehaviour
 
     void Die()
     {
+        gameManager.ScoreUp(1000);
         gameManager.WinGame(); 
     }
     private void OnTriggerEnter(Collider other)

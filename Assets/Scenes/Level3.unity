@@ -3785,15 +3785,15 @@ MonoBehaviour:
   projectilePrefab: {fileID: 0}
   spawnSettings:
   - spawnPoint: {fileID: 199737095}
-    fireRate: 1
+    fireRate: 2
     initialDelay: 0
     nextFireTime: 0
   - spawnPoint: {fileID: 239831386}
-    fireRate: 1.5
+    fireRate: 3
     initialDelay: 0
     nextFireTime: 0
   - spawnPoint: {fileID: 563800479}
-    fireRate: 2
+    fireRate: 4
     initialDelay: 0
     nextFireTime: 0
   spawnOffsetDistance: 0.5

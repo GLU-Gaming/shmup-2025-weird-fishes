@@ -4,19 +4,21 @@ using UnityEngine.UI;
 
 public class BossHealth : MonoBehaviour
 {
-    [SerializeField] private float maxHealth = 250f;
+    [SerializeField] private float maxHealth = 100f;
     [SerializeField] private float currentHealth;
 
     //[SerializeField] private SpriteRenderer healthBarRenderer;
     //[SerializeField] private Sprite[] healthSprites; // Array van custom health sprites
     [SerializeField] private Image bossHPBar;
     private GameManager gameManager;
+    private AudioManager audioManager;
 
     void Start()
     {
         gameManager = FindFirstObjectByType<GameManager>();
-        maxHealth = 125f;
-        currentHealth = 125f;
+        audioManager = FindFirstObjectByType<AudioManager>();
+        maxHealth = 100f;
+        currentHealth = 100f;
         bossHPBar.fillAmount = 1f;
         currentHealth = maxHealth;
         UpdateHealthBar();
@@ -49,6 +51,7 @@ public class BossHealth : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player Bullet"))
         {
+            audioManager.PlaySound(4);
             TakeDamage(1);
             Destroy(other.gameObject);
         }

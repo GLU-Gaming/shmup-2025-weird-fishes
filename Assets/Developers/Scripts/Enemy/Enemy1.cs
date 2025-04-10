@@ -44,7 +44,7 @@ public class Enemy1 : EnemyBase
     public override void Damaged()
     {
         gameManager.ScoreUp(20);
-        audioManager.PlaySound(2);
+        audioManager.PlaySound(0);
         Destroyed();
     }
 }

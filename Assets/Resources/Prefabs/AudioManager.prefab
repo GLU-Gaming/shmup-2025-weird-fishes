@@ -48,7 +48,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSFX: {fileID: 3892602611541049624}
   SFX:
-  - {fileID: 8300000, guid: 06a28cb33ed7d1a42b0c2d3a82da0f35, type: 3}
+  - {fileID: 8300000, guid: d4017efdebcd012468443105363d5bd2, type: 3}
+  - {fileID: 8300000, guid: d9ca3553513bf4c4f8ca11cccaa4456b, type: 3}
+  - {fileID: 8300000, guid: 99e51bed6dd4be446b148bae408d8889, type: 3}
+  - {fileID: 8300000, guid: 6fac827e1d402db449c03b6fafb26525, type: 3}
+  - {fileID: 8300000, guid: 30cc4d16e7410b74a8784a330f11aba0, type: 3}
+  - {fileID: 8300000, guid: 282a86649c27735458dfda22bcf7b7e7, type: 3}
+  - {fileID: 8300000, guid: b7fb7efb535d6284c9494a3451aea2a9, type: 3}
   audioMusic: {fileID: 1371739692356790775}
   soundtracks:
   - {fileID: 8300000, guid: 2f471416813d52646bea09de4bd29b51, type: 3}
@@ -78,7 +84,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 60
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -169,13 +175,13 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 190
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

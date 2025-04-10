@@ -61,6 +61,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && fireCooldown <= 0)
         {
+            audioManager.PlaySound(2);
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 270, 0));
             bullet.transform.rotation = Quaternion.Euler(0f, 0f, 270f);
 
@@ -84,14 +85,15 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             Hitted(2);
+            audioManager.PlaySound(3);
         }
 
         if (other.gameObject.CompareTag("Enemy Bullet"))
         {
             //Boom
             Hitted();
-            audioManager.ChangeVolumeSound("d");
             Destroy(other.gameObject);
+            audioManager.PlaySound(3);
         }
         if (other.gameObject.CompareTag("Kamikadze"))
         {
@@ -115,7 +117,7 @@ public class Player : MonoBehaviour
                 gameManager.Stunned();
                 gameManager.spawnedEnemies.Remove(other.gameObject);
                 Destroy(other.gameObject);
-                audioManager.PlaySound(2);
+                audioManager.PlaySound(0);
             }
         }
 
@@ -143,8 +145,9 @@ public class Player : MonoBehaviour
         //spawning exsplosion particle 
         //Instantiate(BoomVFX);  
 
-        if (health <= 4)
+        if (health <= 5)
         {
+            audioManager.ChangeVolumeSound("up");
             gameManager.MakeScreenRed(); //Changing volume profile for "blood" effect
 
         }

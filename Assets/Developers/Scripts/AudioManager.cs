@@ -69,20 +69,28 @@ public class AudioManager : MonoBehaviour
                 audioSFX.PlayOneShot(SFX[0]);
                 break;
             case 1:
-                //audioSFX.PlayOneShot(SFX[1]);
+                audioSFX.PlayOneShot(SFX[1]);
                 break;
             case 2:
-                //audioSFX.PlayOneShot(SFX[2]);
+                audioSFX.PlayOneShot(SFX[2]);
                 break;
             case 3:
-                //audioSFX.PlayOneShot(SFX[3]);
+                audioSFX.PlayOneShot(SFX[3]);
+                break;
+            case 4:
+                audioSFX.PlayOneShot(SFX[4]);
+                break;
+            case 5:
+                audioSFX.PlayOneShot(SFX[5]);
+                break;
+            case 6:
+                audioSFX.PlayOneShot(SFX[6]);
                 break;
 
         }
     }
      void Update()
     {
-        //Debug.Log(audioMusic.volume);
 
 
         // smooth change volume

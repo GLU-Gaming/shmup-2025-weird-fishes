@@ -79,6 +79,7 @@ public class Enemy3 : EnemyBase
             yield return StartCoroutine(SlowDownRotation());
             yield return new WaitForSeconds(3.5f - 1f);
             isRotating = true;
+            audioManager.PlaySound(6);
             targetSpeed = rotationSpeed;
         }
     }
@@ -119,6 +120,7 @@ public class Enemy3 : EnemyBase
 
     public override void Destroyed()
     {
+        audioManager.PlaySound(0);
         Instantiate(particles[0], transform.position, Quaternion.identity);
         gameManager.ScoreUp(40);
         gameManager.spawnedEnemies.Remove(gameObject);
@@ -144,6 +146,7 @@ public class Enemy3 : EnemyBase
             Destroyed();
         } else
         {
+            audioManager.PlaySound(4);
             Instantiate(particles[1], transform.position, Quaternion.identity);
         }
     }

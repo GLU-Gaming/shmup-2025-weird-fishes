@@ -42,6 +42,7 @@ public class Enemy2 : EnemyBase
 
     public override void Shoot()
     {
+        audioManager.PlaySound(5);
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 90, 0));
         bullet.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
         fireCooldown = 2.5f;
@@ -50,6 +51,7 @@ public class Enemy2 : EnemyBase
     public override void Destroyed()
     {
         //deleting enemy
+        audioManager.PlaySound(0);
         Instantiate(particle, transform.position, Quaternion.identity);
         gameManager.ScoreUp(25);
         gameManager.spawnedEnemies.Remove(gameObject);

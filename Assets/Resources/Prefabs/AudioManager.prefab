@@ -51,10 +51,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 06a28cb33ed7d1a42b0c2d3a82da0f35, type: 3}
   audioMusic: {fileID: 1371739692356790775}
   soundtracks:
+  - {fileID: 8300000, guid: 2f471416813d52646bea09de4bd29b51, type: 3}
   - {fileID: 8300000, guid: 70948c09bcdfdd343ac387e12ddd167e, type: 3}
   - {fileID: 8300000, guid: a4575e9d52dbd7040b4be3256e67ddf7, type: 3}
   - {fileID: 8300000, guid: 7d95fe3bf9dc5ab4abec3d93f8cd3236, type: 3}
-  - {fileID: 8300000, guid: f36f3504e4f5707439bfd678c488f7c5, type: 3}
+  - {fileID: 8300000, guid: c1c0018d9982c3d47ad74f561d0a48b6, type: 3}
+  - {fileID: 8300000, guid: 2f471416813d52646bea09de4bd29b51, type: 3}
   timeDuration: 1
   changeConfig: 
 --- !u!82 &3892602611541049624

@@ -29,22 +29,30 @@ public class AudioManager : MonoBehaviour
         string currentScene = SceneManager.GetActiveScene().name;
 
         //Setting soundtrack depending on a scene
-        if (currentScene == "Level1")
+        if (currentScene == "Menu")
         {
             audioMusic.clip = soundtracks[0];
 
-        } else if (currentScene == "Level2")
+        } 
+        else if (currentScene == "Level1")
         {
             audioMusic.clip = soundtracks[1];
-        } else if (currentScene == "Level3")
+        } 
+        else if (currentScene == "Level2")
         {
             audioMusic.clip = soundtracks[2];
-        } else if (currentScene == "Menu")
+        } 
+        else if (currentScene == "Level3")
         {
-            //audioMusic.clip = soundtracks[3];
-        } else if (currentScene == "GameOver")
+            audioMusic.clip = soundtracks[3];
+        } 
+        else if (currentScene == "GameOver")
         {
-            //audioMusic.clip = soundtracks[4];
+            audioMusic.clip = soundtracks[4];
+        }
+        else if (currentScene == "winYAY")
+        {
+            audioMusic.clip = soundtracks[5];
         }
         // "𝄞 Music sounds better with you 𝄞"
         audioMusic.Play();

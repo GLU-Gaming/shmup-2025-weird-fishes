@@ -1185,7 +1185,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: QUIT
+  m_text: MENU
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: da566e5c7c509fe4ba4373addd9c377b, type: 2}
   m_sharedMaterial: {fileID: -8055049356797120413, guid: da566e5c7c509fe4ba4373addd9c377b, type: 2}
@@ -2306,7 +2306,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1632388420}
         m_TargetAssemblyTypeName: MenuUI, Assembly-CSharp
-        m_MethodName: Quit
+        m_MethodName: GotoMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

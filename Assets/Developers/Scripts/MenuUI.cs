@@ -57,6 +57,11 @@ public class MenuUI : MonoBehaviour
         PlayerPrefs.SetInt("Score", 0);
         TransitionManager.Instance.LoadSceneWithFade("Level1");
     }
+    public void GotoMenu()
+    {
+        PlayerPrefs.SetInt("Score", 0);
+        TransitionManager.Instance.LoadSceneWithFade("Menu");
+    }
     private void AnimateSteam()
     {
         if (steams[0].activeSelf)

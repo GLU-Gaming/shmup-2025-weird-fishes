@@ -1,6 +1,6 @@
-﻿using UnityEditor.ShaderGraph.Internal;
+﻿//using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+//using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour

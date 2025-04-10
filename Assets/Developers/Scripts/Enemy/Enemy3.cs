@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering;
+//using UnityEngine.Rendering;
 
 public class Enemy3 : EnemyBase
 {

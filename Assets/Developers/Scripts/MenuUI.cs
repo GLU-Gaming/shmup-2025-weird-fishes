@@ -1,9 +1,9 @@
-﻿using System.Reflection;
-using UnityEditor.SceneManagement;
+﻿//using System.Reflection;
+//using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.EventSystems;
+//using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
+//using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class MenuUI : MonoBehaviour

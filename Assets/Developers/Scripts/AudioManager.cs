@@ -128,6 +128,8 @@ public class AudioManager : MonoBehaviour
             changeConfig = "mideum";
         }
     }
+
+    // return string for operation
     private float GetTargetValue()
     {
         

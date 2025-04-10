@@ -13,6 +13,7 @@ public class BossBullet : MonoBehaviour
 
     void Update()
     {
+        // moves bullet
         float step = speed * Time.deltaTime;
         transform.Translate(Vector3.back * speed * Time.deltaTime);
         lifeDuration -= Time.deltaTime;

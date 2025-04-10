@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Threading;
 using UnityEngine;
 //using UnityEngine.Rendering;
 
@@ -71,6 +72,7 @@ public class Enemy3 : EnemyBase
         }
     }
 
+    // timer for rotation
     IEnumerator ControlRotation()
     {
         while (true)
@@ -84,6 +86,8 @@ public class Enemy3 : EnemyBase
         }
     }
 
+
+    // timer for smooth stop
     IEnumerator SlowDownRotation()
     {
         isSlowingDown = true;
@@ -118,6 +122,8 @@ public class Enemy3 : EnemyBase
         fireRate = 0.15f;
     }
 
+
+    //Enemy has been destroyed
     public override void Destroyed()
     {
         audioManager.PlaySound(0);
@@ -151,6 +157,7 @@ public class Enemy3 : EnemyBase
         }
     }
 
+    //trigger to take damage
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player Bullet"))
@@ -164,6 +171,8 @@ public class Enemy3 : EnemyBase
             Damaged();
         }
     }
+
+    // Damage visual effect
     private System.Collections.IEnumerator FlashEffect()
     {
         enRenderer.material.color = flashColor;

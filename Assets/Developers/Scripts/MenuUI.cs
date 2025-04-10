@@ -48,6 +48,8 @@ public class MenuUI : MonoBehaviour
             AnimateSteam();
         }
     }
+
+    // functions for the button
     public void Quit()
     {
         Application.Quit();
@@ -62,6 +64,8 @@ public class MenuUI : MonoBehaviour
         PlayerPrefs.SetInt("Score", 0);
         TransitionManager.Instance.LoadSceneWithFade("Menu");
     }
+
+    // stream object simple animation
     private void AnimateSteam()
     {
         if (steams[0].activeSelf)

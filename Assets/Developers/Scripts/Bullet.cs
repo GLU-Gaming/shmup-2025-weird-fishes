@@ -12,8 +12,11 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
+        // moves bullet
         float step = speed * Time.deltaTime;
         transform.Translate(Vector3.up * speed * Time.deltaTime);
+
+        // destroy the bullet by the time
         lifeDuration -= Time.deltaTime;
         if (lifeDuration <= 0 )
         {

@@ -40,6 +40,8 @@ public class Enemy2 : EnemyBase
     }
      
 
+
+    //Shooting
     public override void Shoot()
     {
         audioManager.PlaySound(5);
@@ -48,6 +50,7 @@ public class Enemy2 : EnemyBase
         fireCooldown = 2.5f;
     }
 
+    //Enemy has been destroyed
     public override void Destroyed()
     {
         //deleting enemy

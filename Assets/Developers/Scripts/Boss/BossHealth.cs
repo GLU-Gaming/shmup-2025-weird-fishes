@@ -24,6 +24,8 @@ public class BossHealth : MonoBehaviour
         UpdateHealthBar();
     }
 
+    //boss taking damage
+
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
@@ -42,11 +44,14 @@ public class BossHealth : MonoBehaviour
         //healthBarRenderer.sprite = healthSprites[spriteIndex];
     }
 
+    //boss is dead
     void Die()
     {
         gameManager.ScoreUp(1000);
         gameManager.WinGame(); 
     }
+
+    // trigger to take damage
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player Bullet"))
